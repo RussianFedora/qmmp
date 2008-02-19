@@ -1,6 +1,6 @@
 Name:		qmmp
 Version:	0.1.5
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Qt-based multimedia player
 
 Group:		Applications/Multimedia
@@ -88,6 +88,9 @@ fi
 
 
 %changelog
+* Tue Feb 19 2008 Fedora Release Engineering <rel-eng@fedoraproject.org> - 0.1.5-2
+- Autorebuild for GCC 4.3
+
 * Mon Dec 10 2007 Karel Volny <kvolny@redhat.com> 0.1.5-1
 - new version
 - simplified setting of library destination
