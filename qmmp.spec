@@ -1,6 +1,6 @@
 Name:		qmmp
-Version:	0.1.5
-Release:	2%{?dist}
+Version:	0.1.6
+Release:	1%{?dist}
 Summary:	Qt-based multimedia player
 
 Group:		Applications/Multimedia
@@ -8,7 +8,6 @@ License:	GPLv2+
 URL:		http://qmmp.ylsoftware.com/index_en.html
 Source:		http://qmmp.ylsoftware.com/files/%{name}-%{version}.tar.bz2
 Source2:	qmmp-filter-provides.sh
-#Patch:		qmmp-0.1.4-install-permissions.patch
 %define		_use_internal_dependency_generator 0
 %define		__find_provides %{SOURCE2}
 
@@ -39,7 +38,6 @@ Main opportunities:
 
 %prep
 %setup -q
-#%patch -p1
 
 %build
 %cmake \
@@ -88,6 +86,9 @@ fi
 
 
 %changelog
+* Tue May 13 2008 Karel Volny <kvolny@redhat.com> 0.1.6-1
+- new version
+
 * Tue Feb 19 2008 Fedora Release Engineering <rel-eng@fedoraproject.org> - 0.1.5-2
 - Autorebuild for GCC 4.3
 
