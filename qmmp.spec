@@ -1,5 +1,5 @@
 Name:		qmmp
-Version:	0.1.6
+Version:	0.2.0
 Release:	1%{?dist}
 Summary:	Qt-based multimedia player
 
@@ -18,23 +18,41 @@ BuildRequires:	jack-audio-connection-kit-devel >= 0.102.5
 BuildRequires:	libmpcdec-devel >= 1.2.2 libvorbis-devel libogg-devel
 BuildRequires:	libsamplerate-devel alsa-lib-devel taglib-devel
 BuildRequires:	qt4-devel >= 4.2 desktop-file-utils
+BuildRequires:	libsndfile-devel wavpack-devel pulseaudio-libs-devel
+BuildRequires:	libcurl-devel
 
 Requires(post):	/sbin/ldconfig
 Requires(pre):	/sbin/ldconfig
+
+%package devel
+Summary:	Header files for qmmp
+Group:		Development/Libraries
 
 %description
 This program is an audio-player, written with help of Qt library.
 The user interface is similar to winamp or xmms.
 Main opportunities:
 
-	* unpacked winamp skins support;
-	* plugins support;
-	* Ogg Vorbis support;
-	* Native FLAC support;
-	* Musepack support;
-	* WMA support;
-	* AlSA sound output;
-	* JACK sound output.
+	* Winamp and xmms skins support
+	* plugins support
+	* Ogg Vorbis support
+	* native FLAC support
+	* Musepack support
+	* WavePack support
+	* ModPlug support
+	* PCM WAVE support
+	* AlSA sound output
+	* JACK sound output
+	* OSS sound output
+	* PulseAudio output
+	* Last.fm scrobbler
+	* D-Bus support
+	* Spectrum Analyzer
+	* sample rate conversion
+	* streaming support
+
+%description devel
+QMMP is Qt-based audio player. This package contains its header files.
 
 %prep
 %setup -q
@@ -51,9 +69,7 @@ make VERBOSE=1
 %install
 rm -rf %{buildroot}
 make DESTDIR=%{buildroot} install
-# Install icon and desktop file
-mkdir -p %{buildroot}%{_datadir}/icons/hicolor/32x32/apps
-mv  %{buildroot}%{_datadir}/pixmaps/qmmp.xpm %{buildroot}%{_datadir}/icons/hicolor/32x32/apps
+# Install desktop file
 desktop-file-install --delete-original --vendor fedora --dir \
 	%{buildroot}%{_datadir}/applications \
 	%{buildroot}/%{_datadir}/applications/qmmp.desktop
@@ -66,9 +82,12 @@ rm -rf %{buildroot}
 %doc AUTHORS ChangeLog ChangeLog.rus COPYING README README.RUS
 %{_bindir}/qmmp
 %{_libdir}/qmmp
-%{_libdir}/libqmmp.so
+%{_libdir}/libqmmp*
 %{_datadir}/applications/fedora-%{name}.desktop
-%{_datadir}/icons/hicolor/32x32/apps/
+%{_datadir}/icons/hicolor/
+
+%files devel
+%{_includedir}
 
 %post
 /sbin/ldconfig
@@ -86,6 +105,17 @@ fi
 
 
 %changelog
+* Wed Jul 30 2008 Karel Volny <kvolny@redhat.com> 0.2.0-1
+- new version
+- updated %%description to match upstream
+- added BuildRequires: libsndfile-devel wavpack-devel pulseaudio-libs-devel
+- added BuildRequires: libcurl-devel
+- xpm icon is not used anymore (several pngs available)
+- created devel subpackage
+
+* Mon May 19 2008 Karel Volny <kvolny@redhat.com> 0.1.6-2
+- fixed %%description not to include patent-encumbered formats (bug #447141)
+
 * Tue May 13 2008 Karel Volny <kvolny@redhat.com> 0.1.6-1
 - new version
 
