@@ -1,6 +1,6 @@
 Name:		qmmp
 Version:	0.2.0
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Qt-based multimedia player
 
 Group:		Applications/Multimedia
@@ -19,7 +19,7 @@ BuildRequires:	libmpcdec-devel >= 1.2.2 libvorbis-devel libogg-devel
 BuildRequires:	libsamplerate-devel alsa-lib-devel taglib-devel
 BuildRequires:	qt4-devel >= 4.2 desktop-file-utils
 BuildRequires:	libsndfile-devel wavpack-devel pulseaudio-libs-devel
-BuildRequires:	libcurl-devel
+BuildRequires:	libmodplug-devel libcurl-devel
 
 Requires(post):	/sbin/ldconfig
 Requires(pre):	/sbin/ldconfig
@@ -105,6 +105,9 @@ fi
 
 
 %changelog
+* Wed Jul 30 2008 Karel Volny <kvolny@redhat.com> 0.2.0-2
+- added BuildRequires: libmodplug-devel
+
 * Wed Jul 30 2008 Karel Volny <kvolny@redhat.com> 0.2.0-1
 - new version
 - updated %%description to match upstream
