@@ -17,9 +17,9 @@ BuildRequires:	cmake flac-devel >= 1.1.3
 BuildRequires:	jack-audio-connection-kit-devel >= 0.102.5
 BuildRequires:	libmpcdec-devel >= 1.2.2 libvorbis-devel libogg-devel
 BuildRequires:	libsamplerate-devel alsa-lib-devel taglib-devel
-BuildRequires:	qt4-devel >= 4.2 desktop-file-utils
+BuildRequires:	qt-devel >= 4.2 desktop-file-utils
 BuildRequires:	libsndfile-devel wavpack-devel pulseaudio-libs-devel
-BuildRequires:	openssl-devel
+BuildRequires:	libmodplug-devel libcurl-devel openssl-devel
 
 Requires(post):	/sbin/ldconfig
 Requires(pre):	/sbin/ldconfig
@@ -105,11 +105,11 @@ fi
 
 
 %changelog
-* Tue Jul 29 2008 Karel Volny <kvolny@redhat.com> 0.2.0-1
+* Wed Jul 30 2008 Karel Volny <kvolny@redhat.com> 0.2.0-1
 - new version
 - updated %%description to match upstream
 - added BuildRequires: libsndfile-devel wavpack-devel pulseaudio-libs-devel
-- added BuildRequires: openssl-devel (fixes bug #449658)
+- added BuildRequires: libmodplug-devel libcurl-devel openssl-devel
 - xpm icon is not used anymore (several pngs available)
 - created devel subpackage
 
