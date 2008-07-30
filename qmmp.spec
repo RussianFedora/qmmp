@@ -19,7 +19,7 @@ BuildRequires:	libmpcdec-devel >= 1.2.2 libvorbis-devel libogg-devel
 BuildRequires:	libsamplerate-devel alsa-lib-devel taglib-devel
 BuildRequires:	qt4-devel >= 4.2 desktop-file-utils
 BuildRequires:	libsndfile-devel wavpack-devel pulseaudio-libs-devel
-BuildRequires:	libmodplug-devel libcurl-devel
+BuildRequires:	libmodplug-devel curl-devel
 
 Requires(post):	/sbin/ldconfig
 Requires(pre):	/sbin/ldconfig
@@ -109,7 +109,7 @@ fi
 - new version
 - updated %%description to match upstream
 - added BuildRequires: libsndfile-devel wavpack-devel pulseaudio-libs-devel
-- added BuildRequires: libmodplug-devel libcurl-devel
+- added BuildRequires: libmodplug-devel curl-devel
 - xpm icon is not used anymore (several pngs available)
 - created devel subpackage
 
