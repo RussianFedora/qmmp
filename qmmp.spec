@@ -1,5 +1,5 @@
 Name:		qmmp
-Version:	0.2.0
+Version:	0.2.2
 Release:	1%{?dist}
 Summary:	Qt-based multimedia player
 
@@ -105,6 +105,9 @@ fi
 
 
 %changelog
+* Tue Sep 02 2008 Karel Volny <kvolny@redhat.com> 0.2.2-1
+- new version
+
 * Wed Jul 30 2008 Karel Volny <kvolny@redhat.com> 0.2.0-1
 - new version
 - updated %%description to match upstream
