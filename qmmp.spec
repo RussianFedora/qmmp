@@ -1,5 +1,5 @@
 Name:		qmmp
-Version:	0.2.2
+Version:	0.2.3
 Release:	1%{?dist}
 Summary:	Qt-based multimedia player
 
@@ -64,7 +64,7 @@ QMMP is Qt-based audio player. This package contains its header files.
 	-D CMAKE_INSTALL_PREFIX=%{_prefix} \
 	-D LIB_DIR=%{_lib} \
 	./
-make VERBOSE=1
+make %{?_smp_mflags} VERBOSE=1
 
 %install
 rm -rf %{buildroot}
@@ -105,6 +105,10 @@ fi
 
 
 %changelog
+* Fri Dec 05 2008 Karel Volny <kvolny@redhat.com> 0.2.3-1
+- new version
+- added %%{?_smp_mflags} to make, as parallel build was fixed
+
 * Tue Sep 02 2008 Karel Volny <kvolny@redhat.com> 0.2.2-1
 - new version
 
