@@ -1,6 +1,6 @@
 Name:		qmmp
 Version:	0.2.3
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Qt-based multimedia player
 
 Group:		Applications/Multimedia
@@ -10,16 +10,16 @@ Source:		http://qmmp.ylsoftware.com/files/%{name}-%{version}.tar.bz2
 Source2:	qmmp-filter-provides.sh
 %define		_use_internal_dependency_generator 0
 %define		__find_provides %{SOURCE2}
+Patch:		qmmp-0.2.3-qt42.patch
 
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 
-BuildRequires:	cmake flac-devel >= 1.1.3
-BuildRequires:	jack-audio-connection-kit-devel >= 0.102.5
+BuildRequires:	cmake jack-audio-connection-kit-devel >= 0.102.5
 BuildRequires:	libmpcdec-devel >= 1.2.2 libvorbis-devel libogg-devel
 BuildRequires:	libsamplerate-devel alsa-lib-devel taglib-devel
-BuildRequires:	qt-devel >= 4.2 desktop-file-utils
+BuildRequires:	qt4-devel >= 4.2 desktop-file-utils
 BuildRequires:	libsndfile-devel wavpack-devel pulseaudio-libs-devel
-BuildRequires:	libmodplug-devel libcurl-devel openssl-devel
+BuildRequires:	libmodplug-devel curl-devel
 
 Requires(post):	/sbin/ldconfig
 Requires(pre):	/sbin/ldconfig
@@ -36,7 +36,6 @@ Main opportunities:
 	* Winamp and xmms skins support
 	* plugins support
 	* Ogg Vorbis support
-	* native FLAC support
 	* Musepack support
 	* WavePack support
 	* ModPlug support
@@ -56,10 +55,13 @@ QMMP is Qt-based audio player. This package contains its header files.
 
 %prep
 %setup -q
+%patch -p1
 
 %build
+export QTDIR="%{_libdir}/qt4/"
 %cmake \
 	-D USE_FFMPEG:BOOL=FALSE \
+	-D USE_FLAC:BOOL=FALSE \
 	-D USE_MAD:BOOL=FALSE \
 	-D CMAKE_INSTALL_PREFIX=%{_prefix} \
 	-D LIB_DIR=%{_lib} \
@@ -105,6 +107,12 @@ fi
 
 
 %changelog
+* Thu Jan 15 2009 Karel Volny <kvolny@redhat.com> 0.2.3-2
+- version for EPEL
+- adjusted BuildRequires to match EPEL
+- disabled FLAC, the older version is not compatible
+- patched for using qt4-4.2 (thanks to Ilya Kotov)
+
 * Fri Dec 05 2008 Karel Volny <kvolny@redhat.com> 0.2.3-1
 - new version
 - added %%{?_smp_mflags} to make, as parallel build was fixed

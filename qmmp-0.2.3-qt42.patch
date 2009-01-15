@@ -1,0 +1,1276 @@
+--- qmmp-0.2.3/src/plugins/General/notifier/settingsdialog.ui~	2008-07-22 13:08:53.000000000 +0200
++++ qmmp-0.2.3/src/plugins/General/notifier/settingsdialog.ui	2009-01-08 15:59:31.000000000 +0100
+@@ -217,18 +217,6 @@
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+-     <property name="leftMargin" >
+-      <number>0</number>
+-     </property>
+-     <property name="topMargin" >
+-      <number>0</number>
+-     </property>
+-     <property name="rightMargin" >
+-      <number>0</number>
+-     </property>
+-     <property name="bottomMargin" >
+-      <number>0</number>
+-     </property>
+      <item>
+       <spacer>
+        <property name="orientation" >
+--- qmmp-0.2.3/src/plugins/General/statusicon/settingsdialog.ui~	2008-07-22 13:08:58.000000000 +0200
++++ qmmp-0.2.3/src/plugins/General/statusicon/settingsdialog.ui	2009-01-08 16:00:02.000000000 +0100
+@@ -58,18 +58,6 @@
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+-     <property name="leftMargin" >
+-      <number>0</number>
+-     </property>
+-     <property name="topMargin" >
+-      <number>0</number>
+-     </property>
+-     <property name="rightMargin" >
+-      <number>0</number>
+-     </property>
+-     <property name="bottomMargin" >
+-      <number>0</number>
+-     </property>
+      <item>
+       <spacer>
+        <property name="orientation" >
+--- qmmp-0.2.3/src/ui/forms/aboutdialog.ui~	2008-07-22 13:10:39.000000000 +0200
++++ qmmp-0.2.3/src/ui/forms/aboutdialog.ui	2009-01-08 16:10:44.000000000 +0100
+@@ -16,18 +16,6 @@
+    <property name="spacing" >
+     <number>6</number>
+    </property>
+-   <property name="leftMargin" >
+-    <number>9</number>
+-   </property>
+-   <property name="topMargin" >
+-    <number>9</number>
+-   </property>
+-   <property name="rightMargin" >
+-    <number>9</number>
+-   </property>
+-   <property name="bottomMargin" >
+-    <number>9</number>
+-   </property>
+    <item>
+     <widget class="QLabel" name="pixmapLabel" >
+      <property name="text" >
+@@ -51,24 +39,6 @@
+        <string>About</string>
+       </attribute>
+       <layout class="QGridLayout" >
+-       <property name="leftMargin" >
+-        <number>9</number>
+-       </property>
+-       <property name="topMargin" >
+-        <number>9</number>
+-       </property>
+-       <property name="rightMargin" >
+-        <number>9</number>
+-       </property>
+-       <property name="bottomMargin" >
+-        <number>9</number>
+-       </property>
+-       <property name="horizontalSpacing" >
+-        <number>6</number>
+-       </property>
+-       <property name="verticalSpacing" >
+-        <number>6</number>
+-       </property>
+        <item row="0" column="0" >
+         <widget class="QTextEdit" name="aboutTextEdit" >
+          <property name="readOnly" >
+@@ -83,24 +53,6 @@
+        <string>Authors</string>
+       </attribute>
+       <layout class="QGridLayout" >
+-       <property name="leftMargin" >
+-        <number>9</number>
+-       </property>
+-       <property name="topMargin" >
+-        <number>9</number>
+-       </property>
+-       <property name="rightMargin" >
+-        <number>9</number>
+-       </property>
+-       <property name="bottomMargin" >
+-        <number>9</number>
+-       </property>
+-       <property name="horizontalSpacing" >
+-        <number>6</number>
+-       </property>
+-       <property name="verticalSpacing" >
+-        <number>6</number>
+-       </property>
+        <item row="0" column="0" >
+         <widget class="QTextEdit" name="authorsTextEdit" >
+          <property name="readOnly" >
+@@ -132,18 +84,6 @@
+        <property name="spacing" >
+         <number>6</number>
+        </property>
+-       <property name="leftMargin" >
+-        <number>9</number>
+-       </property>
+-       <property name="topMargin" >
+-        <number>9</number>
+-       </property>
+-       <property name="rightMargin" >
+-        <number>9</number>
+-       </property>
+-       <property name="bottomMargin" >
+-        <number>9</number>
+-       </property>
+        <item>
+         <widget class="QTextEdit" name="thanksToTextEdit" >
+          <property name="readOnly" >
+@@ -158,24 +98,6 @@
+        <string>License Agreement</string>
+       </attribute>
+       <layout class="QGridLayout" >
+-       <property name="leftMargin" >
+-        <number>9</number>
+-       </property>
+-       <property name="topMargin" >
+-        <number>9</number>
+-       </property>
+-       <property name="rightMargin" >
+-        <number>9</number>
+-       </property>
+-       <property name="bottomMargin" >
+-        <number>9</number>
+-       </property>
+-       <property name="horizontalSpacing" >
+-        <number>6</number>
+-       </property>
+-       <property name="verticalSpacing" >
+-        <number>6</number>
+-       </property>
+        <item row="0" column="0" >
+         <widget class="QTextEdit" name="licenseTextEdit" >
+          <property name="readOnly" >
+--- qmmp-0.2.3/src/ui/forms/addurldialog.ui~	2008-07-22 13:10:39.000000000 +0200
++++ qmmp-0.2.3/src/ui/forms/addurldialog.ui	2009-01-08 16:25:59.000000000 +0100
+@@ -13,18 +13,6 @@
+    <string>Enter URL to add</string>
+   </property>
+   <layout class="QGridLayout" >
+-   <property name="leftMargin" >
+-    <number>5</number>
+-   </property>
+-   <property name="topMargin" >
+-    <number>5</number>
+-   </property>
+-   <property name="rightMargin" >
+-    <number>5</number>
+-   </property>
+-   <property name="bottomMargin" >
+-    <number>5</number>
+-   </property>
+    <item row="0" column="0" colspan="3" >
+     <widget class="QComboBox" name="urlComboBox" >
+      <property name="editable" >
+--- qmmp-0.2.3/src/ui/forms/configdialog.ui~	2008-12-02 20:53:08.000000000 +0100
++++ qmmp-0.2.3/src/ui/forms/configdialog.ui	2009-01-08 16:37:00.000000000 +0100
+@@ -143,18 +143,6 @@
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+-         <property name="leftMargin" >
+-          <number>9</number>
+-         </property>
+-         <property name="topMargin" >
+-          <number>5</number>
+-         </property>
+-         <property name="rightMargin" >
+-          <number>0</number>
+-         </property>
+-         <property name="bottomMargin" >
+-          <number>0</number>
+-         </property>
+          <item>
+           <widget class="QGroupBox" name="groupBox" >
+            <property name="title" >
+@@ -280,15 +268,6 @@
+        </widget>
+        <widget class="QWidget" name="page" >
+         <layout class="QVBoxLayout" >
+-         <property name="topMargin" >
+-          <number>5</number>
+-         </property>
+-         <property name="rightMargin" >
+-          <number>0</number>
+-         </property>
+-         <property name="bottomMargin" >
+-          <number>0</number>
+-         </property>
+          <item>
+           <widget class="QGroupBox" name="groupBox_3" >
+            <property name="title" >
+@@ -378,18 +357,6 @@
+        </widget>
+        <widget class="QWidget" name="widget" >
+         <layout class="QGridLayout" >
+-         <property name="leftMargin" >
+-          <number>9</number>
+-         </property>
+-         <property name="topMargin" >
+-          <number>5</number>
+-         </property>
+-         <property name="rightMargin" >
+-          <number>0</number>
+-         </property>
+-         <property name="bottomMargin" >
+-          <number>0</number>
+-         </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+@@ -537,18 +504,6 @@
+        </widget>
+        <widget class="QWidget" name="page_2" >
+         <layout class="QVBoxLayout" >
+-         <property name="leftMargin" >
+-          <number>9</number>
+-         </property>
+-         <property name="topMargin" >
+-          <number>5</number>
+-         </property>
+-         <property name="rightMargin" >
+-          <number>0</number>
+-         </property>
+-         <property name="bottomMargin" >
+-          <number>0</number>
+-         </property>
+          <item>
+           <widget class="QGroupBox" name="groupBox_6" >
+            <property name="title" >
+@@ -637,18 +592,6 @@
+        </widget>
+        <widget class="QWidget" name="network" >
+         <layout class="QVBoxLayout" >
+-         <property name="leftMargin" >
+-          <number>9</number>
+-         </property>
+-         <property name="topMargin" >
+-          <number>5</number>
+-         </property>
+-         <property name="rightMargin" >
+-          <number>0</number>
+-         </property>
+-         <property name="bottomMargin" >
+-          <number>0</number>
+-         </property>
+          <item>
+           <widget class="QGroupBox" name="groupBox_5" >
+            <property name="title" >
+--- qmmp-0.2.3/src/plugins/Input/vorbis/detailsdialog.ui~	2008-07-22 13:07:35.000000000 +0200
++++ qmmp-0.2.3/src/plugins/Input/vorbis/detailsdialog.ui	2009-01-08 16:49:06.000000000 +0100
+@@ -42,24 +42,6 @@
+       <string>Ogg Vorbis Info</string>
+      </property>
+      <layout class="QGridLayout" >
+-      <property name="leftMargin" >
+-       <number>8</number>
+-      </property>
+-      <property name="topMargin" >
+-       <number>8</number>
+-      </property>
+-      <property name="rightMargin" >
+-       <number>8</number>
+-      </property>
+-      <property name="bottomMargin" >
+-       <number>8</number>
+-      </property>
+-      <property name="horizontalSpacing" >
+-       <number>6</number>
+-      </property>
+-      <property name="verticalSpacing" >
+-       <number>6</number>
+-      </property>
+       <item row="2" column="1" >
+        <widget class="QLabel" name="fileSizeLabel" >
+         <property name="text" >
+@@ -146,24 +128,6 @@
+          <set>Qt::AlignHCenter</set>
+         </property>
+         <layout class="QGridLayout" >
+-         <property name="leftMargin" >
+-          <number>8</number>
+-         </property>
+-         <property name="topMargin" >
+-          <number>8</number>
+-         </property>
+-         <property name="rightMargin" >
+-          <number>8</number>
+-         </property>
+-         <property name="bottomMargin" >
+-          <number>8</number>
+-         </property>
+-         <property name="horizontalSpacing" >
+-          <number>6</number>
+-         </property>
+-         <property name="verticalSpacing" >
+-          <number>6</number>
+-         </property>
+          <item row="1" column="1" >
+           <widget class="QLabel" name="maximumLabel" >
+            <property name="text" >
+@@ -246,24 +210,6 @@
+       <string>Ogg Vorbis Tag</string>
+      </property>
+      <layout class="QGridLayout" >
+-      <property name="leftMargin" >
+-       <number>8</number>
+-      </property>
+-      <property name="topMargin" >
+-       <number>8</number>
+-      </property>
+-      <property name="rightMargin" >
+-       <number>8</number>
+-      </property>
+-      <property name="bottomMargin" >
+-       <number>8</number>
+-      </property>
+-      <property name="horizontalSpacing" >
+-       <number>6</number>
+-      </property>
+-      <property name="verticalSpacing" >
+-       <number>6</number>
+-      </property>
+       <item row="6" column="1" >
+        <widget class="QPushButton" name="saveButton" >
+         <property name="enabled" >
+--- qmmp-0.2.3/src/plugins/Input/mpc/detailsdialog.ui~	2008-07-22 13:07:13.000000000 +0200
++++ qmmp-0.2.3/src/plugins/Input/mpc/detailsdialog.ui	2009-01-08 16:55:13.000000000 +0100
+@@ -42,24 +42,6 @@
+       <string>Musepack Info</string>
+      </property>
+      <layout class="QGridLayout" >
+-      <property name="leftMargin" >
+-       <number>8</number>
+-      </property>
+-      <property name="topMargin" >
+-       <number>8</number>
+-      </property>
+-      <property name="rightMargin" >
+-       <number>8</number>
+-      </property>
+-      <property name="bottomMargin" >
+-       <number>8</number>
+-      </property>
+-      <property name="horizontalSpacing" >
+-       <number>6</number>
+-      </property>
+-      <property name="verticalSpacing" >
+-       <number>6</number>
+-      </property>
+       <item row="6" column="0" >
+        <spacer>
+         <property name="orientation" >
+--- qmmp-0.2.3/src/plugins/Input/wavpack/detailsdialog.ui~	2008-07-22 13:08:04.000000000 +0200
++++ qmmp-0.2.3/src/plugins/Input/wavpack/detailsdialog.ui	2009-01-08 16:59:29.000000000 +0100
+@@ -198,24 +198,6 @@
+       <string>APE Tag</string>
+      </property>
+      <layout class="QGridLayout" >
+-      <property name="leftMargin" >
+-       <number>8</number>
+-      </property>
+-      <property name="topMargin" >
+-       <number>8</number>
+-      </property>
+-      <property name="rightMargin" >
+-       <number>8</number>
+-      </property>
+-      <property name="bottomMargin" >
+-       <number>8</number>
+-      </property>
+-      <property name="horizontalSpacing" >
+-       <number>6</number>
+-      </property>
+-      <property name="verticalSpacing" >
+-       <number>6</number>
+-      </property>
+       <item row="6" column="1" >
+        <widget class="QPushButton" name="saveButton" >
+         <property name="enabled" >
+--- qmmp-0.2.3/src/plugins/Output/alsa/settingsdialog.ui~	2008-07-22 13:08:09.000000000 +0200
++++ qmmp-0.2.3/src/plugins/Output/alsa/settingsdialog.ui	2009-01-08 17:11:23.000000000 +0100
+@@ -13,24 +13,6 @@
+    <string>ALSA Plugin Settings</string>
+   </property>
+   <layout class="QGridLayout" >
+-   <property name="leftMargin" >
+-    <number>9</number>
+-   </property>
+-   <property name="topMargin" >
+-    <number>9</number>
+-   </property>
+-   <property name="rightMargin" >
+-    <number>9</number>
+-   </property>
+-   <property name="bottomMargin" >
+-    <number>9</number>
+-   </property>
+-   <property name="horizontalSpacing" >
+-    <number>6</number>
+-   </property>
+-   <property name="verticalSpacing" >
+-    <number>6</number>
+-   </property>
+    <item row="0" column="0" colspan="3" >
+     <widget class="QTabWidget" name="tabWidget" >
+      <property name="currentIndex" >
+@@ -44,18 +26,6 @@
+        <property name="spacing" >
+         <number>6</number>
+        </property>
+-       <property name="leftMargin" >
+-        <number>9</number>
+-       </property>
+-       <property name="topMargin" >
+-        <number>9</number>
+-       </property>
+-       <property name="rightMargin" >
+-        <number>9</number>
+-       </property>
+-       <property name="bottomMargin" >
+-        <number>9</number>
+-       </property>
+        <item>
+         <widget class="QGroupBox" name="groupBox" >
+          <property name="title" >
+@@ -79,24 +49,6 @@
+           <string>Mixer</string>
+          </property>
+          <layout class="QGridLayout" >
+-          <property name="leftMargin" >
+-           <number>9</number>
+-          </property>
+-          <property name="topMargin" >
+-           <number>9</number>
+-          </property>
+-          <property name="rightMargin" >
+-           <number>9</number>
+-          </property>
+-          <property name="bottomMargin" >
+-           <number>9</number>
+-          </property>
+-          <property name="horizontalSpacing" >
+-           <number>6</number>
+-          </property>
+-          <property name="verticalSpacing" >
+-           <number>6</number>
+-          </property>
+           <item row="0" column="1" >
+            <widget class="QComboBox" name="mixerCardComboBox" />
+           </item>
+@@ -136,18 +88,6 @@
+        <property name="spacing" >
+         <number>6</number>
+        </property>
+-       <property name="leftMargin" >
+-        <number>9</number>
+-       </property>
+-       <property name="topMargin" >
+-        <number>9</number>
+-       </property>
+-       <property name="rightMargin" >
+-        <number>9</number>
+-       </property>
+-       <property name="bottomMargin" >
+-        <number>9</number>
+-       </property>
+        <item>
+         <widget class="QGroupBox" name="groupBox_3" >
+          <property name="title" >
+--- qmmp-0.2.3/src/plugins/Output/oss/settingsdialog.ui~	2008-07-22 13:08:14.000000000 +0200
++++ qmmp-0.2.3/src/plugins/Output/oss/settingsdialog.ui	2009-01-08 17:19:23.000000000 +0100
+@@ -13,24 +13,6 @@
+    <string>OSS Plugin Settings</string>
+   </property>
+   <layout class="QGridLayout" >
+-   <property name="leftMargin" >
+-    <number>9</number>
+-   </property>
+-   <property name="topMargin" >
+-    <number>9</number>
+-   </property>
+-   <property name="rightMargin" >
+-    <number>9</number>
+-   </property>
+-   <property name="bottomMargin" >
+-    <number>9</number>
+-   </property>
+-   <property name="horizontalSpacing" >
+-    <number>6</number>
+-   </property>
+-   <property name="verticalSpacing" >
+-    <number>6</number>
+-   </property>
+    <item row="0" column="0" colspan="3" >
+     <widget class="QTabWidget" name="tabWidget" >
+      <property name="currentIndex" >
+@@ -44,18 +26,6 @@
+        <property name="spacing" >
+         <number>6</number>
+        </property>
+-       <property name="leftMargin" >
+-        <number>9</number>
+-       </property>
+-       <property name="topMargin" >
+-        <number>9</number>
+-       </property>
+-       <property name="rightMargin" >
+-        <number>9</number>
+-       </property>
+-       <property name="bottomMargin" >
+-        <number>9</number>
+-       </property>
+        <item>
+         <widget class="QGroupBox" name="groupBox" >
+          <property name="title" >
+@@ -78,24 +48,6 @@
+           <string>Mixer device</string>
+          </property>
+          <layout class="QGridLayout" >
+-          <property name="leftMargin" >
+-           <number>9</number>
+-          </property>
+-          <property name="topMargin" >
+-           <number>9</number>
+-          </property>
+-          <property name="rightMargin" >
+-           <number>9</number>
+-          </property>
+-          <property name="bottomMargin" >
+-           <number>9</number>
+-          </property>
+-          <property name="horizontalSpacing" >
+-           <number>6</number>
+-          </property>
+-          <property name="verticalSpacing" >
+-           <number>6</number>
+-          </property>
+           <item row="0" column="0" >
+            <widget class="QLineEdit" name="lineEdit_2" >
+             <property name="text" >
+@@ -116,42 +68,12 @@
+        <property name="spacing" >
+         <number>6</number>
+        </property>
+-       <property name="leftMargin" >
+-        <number>9</number>
+-       </property>
+-       <property name="topMargin" >
+-        <number>9</number>
+-       </property>
+-       <property name="rightMargin" >
+-        <number>9</number>
+-       </property>
+-       <property name="bottomMargin" >
+-        <number>9</number>
+-       </property>
+        <item>
+         <widget class="QGroupBox" name="groupBox_3" >
+          <property name="title" >
+           <string>Soundcard</string>
+          </property>
+          <layout class="QGridLayout" >
+-          <property name="leftMargin" >
+-           <number>9</number>
+-          </property>
+-          <property name="topMargin" >
+-           <number>9</number>
+-          </property>
+-          <property name="rightMargin" >
+-           <number>9</number>
+-          </property>
+-          <property name="bottomMargin" >
+-           <number>9</number>
+-          </property>
+-          <property name="horizontalSpacing" >
+-           <number>6</number>
+-          </property>
+-          <property name="verticalSpacing" >
+-           <number>6</number>
+-          </property>
+           <item row="3" column="1" >
+            <spacer>
+             <property name="orientation" >
+--- qmmp-0.2.3/src/plugins/FileDialogs/QmmpFileDialog/qmmpfiledialog.cpp~	2008-07-22 13:08:35.000000000 +0200
++++ qmmp-0.2.3/src/plugins/FileDialogs/QmmpFileDialog/qmmpfiledialog.cpp	2009-01-08 17:38:09.000000000 +0100
+@@ -19,6 +19,7 @@
+ ***************************************************************************/
+ 
+ #include <QtPlugin>
++#include <QLocale>
+ #include <QTranslator>
+ #include <QMessageBox>
+ 
+--- qmmp-0.2.3/src/plugins/General/scrobbler/CMakeLists.txt~	2008-09-02 20:29:12.000000000 +0200
++++ qmmp-0.2.3/src/plugins/General/scrobbler/CMakeLists.txt	2009-01-13 20:37:58.000000000 +0100
+@@ -33,12 +33,16 @@
+ link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmpui)
+ 
+ SET(libscrobbler_SRCS
++    md5.cpp
++    qcryptographichash.cpp
+     settingsdialog.cpp
+     scrobbler.cpp
+     scrobblerfactory.cpp
+ )
+ 
+ SET(libscrobbler_MOC_HDRS
++    md5.h
++    qcryptographichash.h
+     settingsdialog.h
+     scrobblerfactory.h
+     scrobbler.h
+--- qmmp-0.2.3/src/plugins/General/scrobbler/md5.cpp~	1970-01-01 01:00:00.000000000 +0100
++++ qmmp-0.2.3/src/plugins/General/scrobbler/md5.cpp	2009-01-13 20:28:45.000000000 +0100
+@@ -0,0 +1,244 @@
++/*
++ * This code implements the MD5 message-digest algorithm.
++ * The algorithm is due to Ron Rivest.  This code was
++ * written by Colin Plumb in 1993, no copyright is claimed.
++ * This code is in the public domain; do with it what you wish.
++ *
++ * Equivalent code is available from RSA Data Security, Inc.
++ * This code has been tested against that, and is equivalent,
++ * except that you don't need to include two pages of legalese
++ * with every copy.
++ *
++ * To compute the message digest of a chunk of bytes, declare an
++ * MD5Context structure, pass it to MD5Init, call MD5Update as
++ * needed on buffers full of bytes, and then call MD5Final, which
++ * will fill a supplied 16-byte array with the digest.
++ *
++ * Changed so as no longer to depend on Colin Plumb's `usual.h' header
++ * definitions; now uses stuff from dpkg's config.h.
++ *  - Ian Jackson <ian@chiark.greenend.org.uk>.
++ * Still in the public domain.
++ */
++
++#include <string.h>		/* for memcpy() */
++#ifndef _WIN32_WCE
++#include <sys/types.h>		/* for stupid systems */
++#else
++#include <types.h>
++#endif
++
++#include "md5.h"
++
++//QT_BEGIN_NAMESPACE
++
++static void
++byteSwap(UWORD32 *buf, unsigned words)
++{
++        const quint32 byteOrderTest = 0x1;
++        if (((char *)&byteOrderTest)[0] == 0) {
++            md5byte *p = (md5byte *)buf;
++
++            do {
++                *buf++ = (UWORD32)((unsigned)p[3] << 8 | p[2]) << 16 |
++                    ((unsigned)p[1] << 8 | p[0]);
++                p += 4;
++            } while (--words);
++        }
++}
++
++/*
++ * Start MD5 accumulation.  Set bit count to 0 and buffer to mysterious
++ * initialization constants.
++ */
++static void MD5Init(struct MD5Context *ctx)
++{
++	ctx->buf[0] = 0x67452301;
++	ctx->buf[1] = 0xefcdab89;
++	ctx->buf[2] = 0x98badcfe;
++	ctx->buf[3] = 0x10325476;
++
++	ctx->bytes[0] = 0;
++	ctx->bytes[1] = 0;
++}
++
++/*
++ * Update context to reflect the concatenation of another buffer full
++ * of bytes.
++ */
++static void MD5Update(struct MD5Context *ctx, md5byte const *buf, unsigned len)
++{
++	UWORD32 t;
++
++	/* Update byte count */
++
++	t = ctx->bytes[0];
++	if ((ctx->bytes[0] = t + len) < t)
++		ctx->bytes[1]++;	/* Carry from low to high */
++
++	t = 64 - (t & 0x3f);	/* Space available in ctx->in (at least 1) */
++	if (t > len) {
++		memcpy((md5byte *)ctx->in + 64 - t, buf, len);
++		return;
++	}
++	/* First chunk is an odd size */
++	memcpy((md5byte *)ctx->in + 64 - t, buf, t);
++	byteSwap(ctx->in, 16);
++	MD5Transform(ctx->buf, ctx->in);
++	buf += t;
++	len -= t;
++
++	/* Process data in 64-byte chunks */
++	while (len >= 64) {
++		memcpy(ctx->in, buf, 64);
++		byteSwap(ctx->in, 16);
++		MD5Transform(ctx->buf, ctx->in);
++		buf += 64;
++		len -= 64;
++	}
++
++	/* Handle any remaining bytes of data. */
++	memcpy(ctx->in, buf, len);
++}
++
++/*
++ * Final wrapup - pad to 64-byte boundary with the bit pattern 
++ * 1 0* (64-bit count of bits processed, MSB-first)
++ */
++static void
++MD5Final(struct MD5Context *ctx, md5byte digest[16])
++{
++	int count = ctx->bytes[0] & 0x3f;	/* Number of bytes in ctx->in */
++	md5byte *p = (md5byte *)ctx->in + count;
++
++	/* Set the first char of padding to 0x80.  There is always room. */
++	*p++ = 0x80;
++
++	/* Bytes of padding needed to make 56 bytes (-8..55) */
++	count = 56 - 1 - count;
++
++	if (count < 0) {	/* Padding forces an extra block */
++		memset(p, 0, count + 8);
++		byteSwap(ctx->in, 16);
++		MD5Transform(ctx->buf, ctx->in);
++		p = (md5byte *)ctx->in;
++		count = 56;
++	}
++	memset(p, 0, count);
++	byteSwap(ctx->in, 14);
++
++	/* Append length in bits and transform */
++	ctx->in[14] = ctx->bytes[0] << 3;
++	ctx->in[15] = ctx->bytes[1] << 3 | ctx->bytes[0] >> 29;
++	MD5Transform(ctx->buf, ctx->in);
++
++	byteSwap(ctx->buf, 4);
++	memcpy(digest, ctx->buf, 16);
++	memset(ctx, 0, sizeof(ctx));	/* In case it's sensitive */
++}
++
++#ifndef ASM_MD5
++
++/* The four core functions - F1 is optimized somewhat */
++
++/* #define F1(x, y, z) (x & y | ~x & z) */
++#define F1(x, y, z) (z ^ (x & (y ^ z)))
++#define F2(x, y, z) F1(z, x, y)
++#define F3(x, y, z) (x ^ y ^ z)
++#define F4(x, y, z) (y ^ (x | ~z))
++
++/* This is the central step in the MD5 algorithm. */
++#define MD5STEP(f,w,x,y,z,in,s) \
++	 (w += f(x,y,z) + in, w = (w<<s | w>>(32-s)) + x)
++
++/*
++ * The core of the MD5 algorithm, this alters an existing MD5 hash to
++ * reflect the addition of 16 longwords of new data.  MD5Update blocks
++ * the data and converts bytes into longwords for this routine.
++ */
++static void
++MD5Transform(UWORD32 buf[4], UWORD32 const in[16])
++{
++	register UWORD32 a, b, c, d;
++
++	a = buf[0];
++	b = buf[1];
++	c = buf[2];
++	d = buf[3];
++
++	MD5STEP(F1, a, b, c, d, in[0] + 0xd76aa478, 7);
++	MD5STEP(F1, d, a, b, c, in[1] + 0xe8c7b756, 12);
++	MD5STEP(F1, c, d, a, b, in[2] + 0x242070db, 17);
++	MD5STEP(F1, b, c, d, a, in[3] + 0xc1bdceee, 22);
++	MD5STEP(F1, a, b, c, d, in[4] + 0xf57c0faf, 7);
++	MD5STEP(F1, d, a, b, c, in[5] + 0x4787c62a, 12);
++	MD5STEP(F1, c, d, a, b, in[6] + 0xa8304613, 17);
++	MD5STEP(F1, b, c, d, a, in[7] + 0xfd469501, 22);
++	MD5STEP(F1, a, b, c, d, in[8] + 0x698098d8, 7);
++	MD5STEP(F1, d, a, b, c, in[9] + 0x8b44f7af, 12);
++	MD5STEP(F1, c, d, a, b, in[10] + 0xffff5bb1, 17);
++	MD5STEP(F1, b, c, d, a, in[11] + 0x895cd7be, 22);
++	MD5STEP(F1, a, b, c, d, in[12] + 0x6b901122, 7);
++	MD5STEP(F1, d, a, b, c, in[13] + 0xfd987193, 12);
++	MD5STEP(F1, c, d, a, b, in[14] + 0xa679438e, 17);
++	MD5STEP(F1, b, c, d, a, in[15] + 0x49b40821, 22);
++
++	MD5STEP(F2, a, b, c, d, in[1] + 0xf61e2562, 5);
++	MD5STEP(F2, d, a, b, c, in[6] + 0xc040b340, 9);
++	MD5STEP(F2, c, d, a, b, in[11] + 0x265e5a51, 14);
++	MD5STEP(F2, b, c, d, a, in[0] + 0xe9b6c7aa, 20);
++	MD5STEP(F2, a, b, c, d, in[5] + 0xd62f105d, 5);
++	MD5STEP(F2, d, a, b, c, in[10] + 0x02441453, 9);
++	MD5STEP(F2, c, d, a, b, in[15] + 0xd8a1e681, 14);
++	MD5STEP(F2, b, c, d, a, in[4] + 0xe7d3fbc8, 20);
++	MD5STEP(F2, a, b, c, d, in[9] + 0x21e1cde6, 5);
++	MD5STEP(F2, d, a, b, c, in[14] + 0xc33707d6, 9);
++	MD5STEP(F2, c, d, a, b, in[3] + 0xf4d50d87, 14);
++	MD5STEP(F2, b, c, d, a, in[8] + 0x455a14ed, 20);
++	MD5STEP(F2, a, b, c, d, in[13] + 0xa9e3e905, 5);
++	MD5STEP(F2, d, a, b, c, in[2] + 0xfcefa3f8, 9);
++	MD5STEP(F2, c, d, a, b, in[7] + 0x676f02d9, 14);
++	MD5STEP(F2, b, c, d, a, in[12] + 0x8d2a4c8a, 20);
++
++	MD5STEP(F3, a, b, c, d, in[5] + 0xfffa3942, 4);
++	MD5STEP(F3, d, a, b, c, in[8] + 0x8771f681, 11);
++	MD5STEP(F3, c, d, a, b, in[11] + 0x6d9d6122, 16);
++	MD5STEP(F3, b, c, d, a, in[14] + 0xfde5380c, 23);
++	MD5STEP(F3, a, b, c, d, in[1] + 0xa4beea44, 4);
++	MD5STEP(F3, d, a, b, c, in[4] + 0x4bdecfa9, 11);
++	MD5STEP(F3, c, d, a, b, in[7] + 0xf6bb4b60, 16);
++	MD5STEP(F3, b, c, d, a, in[10] + 0xbebfbc70, 23);
++	MD5STEP(F3, a, b, c, d, in[13] + 0x289b7ec6, 4);
++	MD5STEP(F3, d, a, b, c, in[0] + 0xeaa127fa, 11);
++	MD5STEP(F3, c, d, a, b, in[3] + 0xd4ef3085, 16);
++	MD5STEP(F3, b, c, d, a, in[6] + 0x04881d05, 23);
++	MD5STEP(F3, a, b, c, d, in[9] + 0xd9d4d039, 4);
++	MD5STEP(F3, d, a, b, c, in[12] + 0xe6db99e5, 11);
++	MD5STEP(F3, c, d, a, b, in[15] + 0x1fa27cf8, 16);
++	MD5STEP(F3, b, c, d, a, in[2] + 0xc4ac5665, 23);
++
++	MD5STEP(F4, a, b, c, d, in[0] + 0xf4292244, 6);
++	MD5STEP(F4, d, a, b, c, in[7] + 0x432aff97, 10);
++	MD5STEP(F4, c, d, a, b, in[14] + 0xab9423a7, 15);
++	MD5STEP(F4, b, c, d, a, in[5] + 0xfc93a039, 21);
++	MD5STEP(F4, a, b, c, d, in[12] + 0x655b59c3, 6);
++	MD5STEP(F4, d, a, b, c, in[3] + 0x8f0ccc92, 10);
++	MD5STEP(F4, c, d, a, b, in[10] + 0xffeff47d, 15);
++	MD5STEP(F4, b, c, d, a, in[1] + 0x85845dd1, 21);
++	MD5STEP(F4, a, b, c, d, in[8] + 0x6fa87e4f, 6);
++	MD5STEP(F4, d, a, b, c, in[15] + 0xfe2ce6e0, 10);
++	MD5STEP(F4, c, d, a, b, in[6] + 0xa3014314, 15);
++	MD5STEP(F4, b, c, d, a, in[13] + 0x4e0811a1, 21);
++	MD5STEP(F4, a, b, c, d, in[4] + 0xf7537e82, 6);
++	MD5STEP(F4, d, a, b, c, in[11] + 0xbd3af235, 10);
++	MD5STEP(F4, c, d, a, b, in[2] + 0x2ad7d2bb, 15);
++	MD5STEP(F4, b, c, d, a, in[9] + 0xeb86d391, 21);
++
++	buf[0] += a;
++	buf[1] += b;
++	buf[2] += c;
++	buf[3] += d;
++}
++
++#endif
++
++//QT_END_NAMESPACE
+--- qmmp-0.2.3/src/plugins/General/scrobbler/md5.h~	1970-01-01 01:00:00.000000000 +0100
++++ qmmp-0.2.3/src/plugins/General/scrobbler/md5.h	2009-01-13 20:26:40.000000000 +0100
+@@ -0,0 +1,48 @@
++/*
++ * This is the header file for the MD5 message-digest algorithm.
++ * The algorithm is due to Ron Rivest.  This code was
++ * written by Colin Plumb in 1993, no copyright is claimed.
++ * This code is in the public domain; do with it what you wish.
++ *
++ * Equivalent code is available from RSA Data Security, Inc.
++ * This code has been tested against that, and is equivalent,
++ * except that you don't need to include two pages of legalese
++ * with every copy.
++ *
++ * To compute the message digest of a chunk of bytes, declare an
++ * MD5Context structure, pass it to MD5Init, call MD5Update as
++ * needed on buffers full of bytes, and then call MD5Final, which
++ * will fill a supplied 16-byte array with the digest.
++ *
++ * Changed so as no longer to depend on Colin Plumb's `usual.h'
++ * header definitions; now uses stuff from dpkg's config.h
++ *  - Ian Jackson <ian@chiark.greenend.org.uk>.
++ * Still in the public domain.
++ */
++
++#ifndef MD5_H
++#define MD5_H
++
++#include <QtGlobal>
++#include <QByteArray>
++#include <QString>
++
++//QT_BEGIN_NAMESPACE
++
++typedef unsigned char md5byte;
++typedef quint32 UWORD32;
++
++struct MD5Context {
++	UWORD32 buf[4];
++	UWORD32 bytes[2];
++	UWORD32 in[16];
++};
++
++static void MD5Init(struct MD5Context *context);
++static void MD5Update(struct MD5Context *context, md5byte const *buf, unsigned len);
++static void MD5Final(struct MD5Context *context, unsigned char digest[16]);
++static void MD5Transform(UWORD32 buf[4], UWORD32 const in[16]);
++
++//QT_END_NAMESPACE
++
++#endif /* !MD5_H */
+--- qmmp-0.2.3/src/plugins/General/scrobbler/qcryptographichash.cpp~	1970-01-01 01:00:00.000000000 +0100
++++ qmmp-0.2.3/src/plugins/General/scrobbler/qcryptographichash.cpp	2009-01-13 20:31:01.000000000 +0100
+@@ -0,0 +1,184 @@
++/****************************************************************************
++**
++** Copyright (C) 2008 Nokia Corporation and/or its subsidiary(-ies).
++** Contact: Qt Software Information (qt-info@nokia.com)
++**
++** This file is part of the QtCore module of the Qt Toolkit.
++**
++** No Commercial Usage
++** This file contains pre-release code and may not be distributed.
++** You may use this file in accordance with the terms and conditions
++** contained in the either Technology Preview License Agreement or the
++** Beta Release License Agreement.
++**
++** GNU General Public License Usage
++** Alternatively, this file may be used under the terms of the GNU
++** General Public License versions 2.0 or 3.0 as published by the Free
++** Software Foundation and appearing in the file LICENSE.GPL included in
++** the packaging of this file.  Please review the following information
++** to ensure GNU General Public Licensing requirements will be met:
++** http://www.fsf.org/licensing/licenses/info/GPLv2.html and
++** http://www.gnu.org/copyleft/gpl.html.  In addition, as a special
++** exception, Nokia gives you certain additional rights. These rights
++** are described in the Nokia Qt GPL Exception version 1.3, included in
++** the file GPL_EXCEPTION.txt in this package.
++**
++** Qt for Windows(R) Licensees
++** As a special exception, Nokia, as the sole copyright holder for Qt
++** Designer, grants users of the Qt/Eclipse Integration plug-in the
++** right for the Qt/Eclipse Integration to link to functionality
++** provided by Qt Designer and its related libraries.
++**
++** If you are unsure which license is appropriate for your use, please
++** contact the sales department at qt-sales@nokia.com.
++**
++****************************************************************************/
++
++#include "qcryptographichash.h"
++
++#include "md5.h"
++#include "md5.cpp"
++
++class QCryptographicHashPrivate
++{
++public:
++    QCryptographicHash::Algorithm method;
++    union {
++        MD5Context md5Context;
++        //md4_context md4Context;
++        //Sha1State sha1Context;
++    };
++    QByteArray result;
++};
++
++/*!
++  \class QCryptographicHash
++
++  \brief The QCryptographicHash class provides a way to generate cryptographic hashes.
++
++  \since 4.3
++
++  \ingroup tools
++  \reentrant
++
++  QCryptographicHash can be used to generate cryptographic hashes of binary or text data.
++
++  Currently MD4, MD5, and SHA1 are supported.
++*/
++
++/*!
++  \enum QCryptographicHash::Algorithm
++
++  \value Md4 Generate an MD4 hash sum
++  \value Md5 Generate an MD5 hash sum
++  \value Sha1 Generate an SHA1 hash sum
++*/
++
++/*!
++  Constructs an object that can be used to create a cryptographic hash from data using \a method.
++*/
++QCryptographicHash::QCryptographicHash(Algorithm method)
++    : d(new QCryptographicHashPrivate)
++{
++    d->method = method;
++    reset();
++}
++
++/*!
++  Destroys the object.
++*/
++QCryptographicHash::~QCryptographicHash()
++{
++    delete d;
++}
++
++/*!
++  Resets the object.
++*/
++void QCryptographicHash::reset()
++{
++    switch (d->method) {
++    /*case Md4:
++        md4_init(&d->md4Context);
++        break;*/
++    case Md5:
++        MD5Init(&d->md5Context);
++        break;
++    /*case Sha1:
++        sha1InitState(&d->sha1Context);
++        break;*/
++    }
++    d->result.clear();
++}
++
++/*!
++    Adds the first \a length chars of \a data to the cryptographic
++    hash.
++*/
++void QCryptographicHash::addData(const char *data, int length)
++{
++    switch (d->method) {
++    /*case Md4:
++        md4_update(&d->md4Context, (const unsigned char *)data, length);
++        break;*/
++    case Md5:
++        MD5Update(&d->md5Context, (const unsigned char *)data, length);
++        break;
++    /*case Sha1:
++        sha1Update(&d->sha1Context, (const unsigned char *)data, length);
++        break;*/
++    }    
++    d->result.clear();
++}
++
++/*!
++  /overload
++*/
++void QCryptographicHash::addData(const QByteArray &data)
++{
++    addData(data.constData(), data.length());
++}
++
++/*!
++  Returns the final hash value.
++
++  \sa QByteArray::toHex()
++*/
++QByteArray QCryptographicHash::result() const
++{
++    if (!d->result.isEmpty()) 
++        return d->result;
++
++    switch (d->method) {
++    /*case Md4: {
++        md4_context copy = d->md4Context;
++        d->result.resize(MD4_RESULTLEN);
++        md4_final(&copy, (unsigned char *)d->result.data());
++        break;
++    }*/
++    case Md5: {
++        MD5Context copy = d->md5Context;
++        d->result.resize(16);
++        MD5Final(&copy, (unsigned char *)d->result.data());
++        break;
++    }
++    /*case Sha1: {
++        Sha1State copy = d->sha1Context;
++        d->result.resize(20);
++        sha1FinalizeState(&copy);
++        sha1ToHash(&copy, (unsigned char *)d->result.data());
++    }*/
++    }
++    return d->result;
++}
++
++/*!
++  Returns the hash of \a data using \a method.
++*/
++QByteArray QCryptographicHash::hash(const QByteArray &data, Algorithm method)
++{
++    QCryptographicHash hash(method);
++    hash.addData(data);
++    return hash.result();
++}
++
+--- qmmp-0.2.3/src/plugins/General/scrobbler/qcryptographichash.h~	1970-01-01 01:00:00.000000000 +0100
++++ qmmp-0.2.3/src/plugins/General/scrobbler/qcryptographichash.h	2009-01-13 20:19:38.000000000 +0100
+@@ -0,0 +1,69 @@
++/****************************************************************************
++**
++** Copyright (C) 2008 Nokia Corporation and/or its subsidiary(-ies).
++** Contact: Qt Software Information (qt-info@nokia.com)
++**
++** This file is part of the QtCore module of the Qt Toolkit.
++**
++** No Commercial Usage
++** This file contains pre-release code and may not be distributed.
++** You may use this file in accordance with the terms and conditions
++** contained in the either Technology Preview License Agreement or the
++** Beta Release License Agreement.
++**
++** GNU General Public License Usage
++** Alternatively, this file may be used under the terms of the GNU
++** General Public License versions 2.0 or 3.0 as published by the Free
++** Software Foundation and appearing in the file LICENSE.GPL included in
++** the packaging of this file.  Please review the following information
++** to ensure GNU General Public Licensing requirements will be met:
++** http://www.fsf.org/licensing/licenses/info/GPLv2.html and
++** http://www.gnu.org/copyleft/gpl.html.  In addition, as a special
++** exception, Nokia gives you certain additional rights. These rights
++** are described in the Nokia Qt GPL Exception version 1.3, included in
++** the file GPL_EXCEPTION.txt in this package.
++**
++** Qt for Windows(R) Licensees
++** As a special exception, Nokia, as the sole copyright holder for Qt
++** Designer, grants users of the Qt/Eclipse Integration plug-in the
++** right for the Qt/Eclipse Integration to link to functionality
++** provided by Qt Designer and its related libraries.
++**
++** If you are unsure which license is appropriate for your use, please
++** contact the sales department at qt-sales@nokia.com.
++**
++****************************************************************************/
++
++#ifndef QCRYPTOGRAPHICSHASH_H
++#define QCRYPTOGRAPHICSHASH_H
++
++#include <QByteArray>
++
++class QCryptographicHashPrivate;
++
++class Q_CORE_EXPORT QCryptographicHash
++{
++public:
++    enum Algorithm {
++        Md4,
++        Md5,
++        Sha1
++    };
++
++    QCryptographicHash(Algorithm method);
++    ~QCryptographicHash();
++
++    void reset();
++
++    void addData(const char *data, int length);
++    void addData(const QByteArray &data);
++
++    QByteArray result() const;
++
++    static QByteArray hash(const QByteArray &data, Algorithm method);
++private:
++    Q_DISABLE_COPY(QCryptographicHash)
++    QCryptographicHashPrivate *d;
++};
++
++#endif
+--- qmmp-0.2.3/src/plugins/General/scrobbler/scrobbler.cpp~	2008-07-22 13:09:02.000000000 +0200
++++ qmmp-0.2.3/src/plugins/General/scrobbler/scrobbler.cpp	2009-01-14 14:25:22.000000000 +0100
+@@ -21,7 +21,7 @@
+ #include <QMenu>
+ #include <QHttp>
+ #include <QByteArray>
+-#include <QCryptographicHash>
++#include "qcryptographichash.h"
+ #include <QUrl>
+ #include <QTime>
+ #include <QSettings>
+@@ -60,7 +60,7 @@
+     }
+ 
+     m_disabled = m_login.isEmpty() || m_passw.isEmpty();
+-    m_passw = QString(QCryptographicHash::hash(m_passw.toAscii(), QCryptographicHash::Md5).toHex());
++    m_passw = QString(toHex(QCryptographicHash::hash(m_passw.toAscii(), QCryptographicHash::Md5)));
+     connect(m_http, SIGNAL(requestFinished (int, bool)), SLOT(processResponse(int, bool)));
+     connect(m_http, SIGNAL(readyRead (const QHttpResponseHeader&)),
+             SLOT(readResponse(const QHttpResponseHeader&)));
+@@ -215,7 +215,7 @@
+     qDebug("Scrobbler: current time stamp %ld",ts);
+     QString auth_tmp = QString("%1%2").arg(m_passw).arg(ts);
+     QByteArray auth = QCryptographicHash::hash(auth_tmp.toAscii (), QCryptographicHash::Md5);
+-    auth = auth.toHex();
++    auth = toHex(auth);
+ 
+     QString url = QString("%1?hs=true&p=%2&c=%3&v=%4&u=%5&t=%6&a=%7")
+                   .arg("/")
+@@ -270,3 +270,24 @@
+ {
+     return !m_submitUrl.isEmpty() && !m_session.isEmpty();
+ }
++
++QByteArray Scrobbler::toHex(QByteArray input) const
++{
++    QByteArray hex;
++    hex.resize(input.size() * 2);
++    char *hexData = hex.data();
++    const uchar *data = (const uchar *)input.constData();
++    for (int i = 0; i < input.size(); ++i) {
++        int j = (data[i] >> 4) & 0xf;
++        if (j <= 9)
++            hexData[i*2] = (j + '0');
++         else
++            hexData[i*2] = (j + 'a' - 10);
++        j = data[i] & 0xf;
++        if (j <= 9)
++            hexData[i*2+1] = (j + '0');
++         else
++            hexData[i*2+1] = (j + 'a' - 10);
++    }
++    return hex;
++}
+--- qmmp-0.2.3/src/plugins/General/scrobbler/scrobbler.h~	2008-07-22 13:09:02.000000000 +0200
++++ qmmp-0.2.3/src/plugins/General/scrobbler/scrobbler.h	2009-01-14 14:21:18.000000000 +0100
+@@ -52,6 +52,7 @@
+     void handshake();
+     void submit();
+     bool isReady();
++    QByteArray toHex(QByteArray input) const;
+     time_t m_start_ts;
+     SongInfo m_song;
+     QHttp *m_http;
+--- qmmp-0.2.3/src/plugins/General/scrobbler/scrobbler.pro~	2008-07-22 13:09:02.000000000 +0200
++++ qmmp-0.2.3/src/plugins/General/scrobbler/scrobbler.pro	2009-01-13 20:18:33.000000000 +0100
+@@ -31,10 +31,14 @@
+ 
+ HEADERS += scrobblerfactory.h \
+            scrobbler.h \
+- settingsdialog.h
++           settingsdialog.h \
++           md5.h \
++           qcryptographichash.h
+ SOURCES += scrobblerfactory.cpp \
+            scrobbler.cpp \
+- settingsdialog.cpp
++           settingsdialog.cpp \
++           md5.cpp \
++           qcryptographichash.cpp
+ QT += network
+ 
+ 
