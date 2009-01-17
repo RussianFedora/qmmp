@@ -1,6 +1,6 @@
 Name:		qmmp
 Version:	0.2.3
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Qt-based multimedia player
 
 Group:		Applications/Multimedia
@@ -105,6 +105,9 @@ fi
 
 
 %changelog
+* Sat Jan 17 2009 Tomas Mraz <tmraz@redhat.com> 0.2.3-2
+- rebuild with new openssl
+
 * Fri Dec 05 2008 Karel Volny <kvolny@redhat.com> 0.2.3-1
 - new version
 - added %%{?_smp_mflags} to make, as parallel build was fixed
