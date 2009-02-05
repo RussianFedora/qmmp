@@ -1,6 +1,6 @@
 Name:		qmmp
 Version:	0.2.3
-Release:	2%{?dist}
+Release:	3%{?dist}
 Summary:	Qt-based multimedia player
 
 Group:		Applications/Multimedia
@@ -87,7 +87,7 @@ rm -rf %{buildroot}
 %{_datadir}/icons/hicolor/
 
 %files devel
-%{_includedir}
+%{_includedir}/*
 
 %post
 /sbin/ldconfig
@@ -105,6 +105,9 @@ fi
 
 
 %changelog
+* Thu Feb 05 2009 Karel Volny <kvolny@redhat.com> 0.2.3-3
+- do not own /usr/include in -devel subpackage (fixes bug #484098)
+
 * Sat Jan 17 2009 Tomas Mraz <tmraz@redhat.com> 0.2.3-2
 - rebuild with new openssl
 
