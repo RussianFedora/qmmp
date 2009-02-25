@@ -1,6 +1,6 @@
 Name:		qmmp
 Version:	0.2.3
-Release:	3%{?dist}
+Release:	4%{?dist}
 Summary:	Qt-based multimedia player
 
 Group:		Applications/Multimedia
@@ -105,6 +105,9 @@ fi
 
 
 %changelog
+* Wed Feb 25 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.2.3-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
+
 * Thu Feb 05 2009 Karel Volny <kvolny@redhat.com> 0.2.3-3
 - do not own /usr/include in -devel subpackage (fixes bug #484098)
 
