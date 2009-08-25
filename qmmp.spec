@@ -1,6 +1,6 @@
 Name:		qmmp
-Version:	0.2.3
-Release:	6%{?dist}
+Version:	0.3.0
+Release:	1%{?dist}
 Summary:	Qt-based multimedia player
 
 Group:		Applications/Multimedia
@@ -15,7 +15,11 @@ BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 
 BuildRequires:	cmake flac-devel >= 1.1.3
 BuildRequires:	jack-audio-connection-kit-devel >= 0.102.5
+# libbs2b is not available yet, submitted for review (bug #519138)
+#BuildRequires:	libbs2b-devel
+BuildRequires:	libcdio-devel
 BuildRequires:	libmpcdec-devel >= 1.2.2 libvorbis-devel libogg-devel
+BuildRequires:	libprojectM-devel
 BuildRequires:	libsamplerate-devel alsa-lib-devel taglib-devel
 BuildRequires:	qt-devel >= 4.2 desktop-file-utils
 BuildRequires:	libsndfile-devel wavpack-devel pulseaudio-libs-devel
@@ -41,15 +45,23 @@ Main opportunities:
 	* WavePack support
 	* ModPlug support
 	* PCM WAVE support
-	* AlSA sound output
+	* CD Audio support
+	* CUE sheet support
+	* ALSA sound output
 	* JACK sound output
 	* OSS sound output
 	* PulseAudio output
-	* Last.fm scrobbler
+	* Last.fm/Libre.fm scrobbler
 	* D-Bus support
 	* Spectrum Analyzer
-	* sample rate conversion 
+	* projectM visualization
+	* sample rate conversion
+	* bs2b dsp effect
 	* streaming support
+	* removable device detection
+	* MPRIS support
+	* global hotkey support
+	* lyrics support
 
 %description devel
 QMMP is Qt-based audio player. This package contains its header files.
@@ -59,8 +71,10 @@ QMMP is Qt-based audio player. This package contains its header files.
 
 %build
 %cmake \
+	-D USE_AAC:BOOL=FALSE \
 	-D USE_FFMPEG:BOOL=FALSE \
 	-D USE_MAD:BOOL=FALSE \
+	-D USE_MPLAYER:BOOL=FALSE \
 	-D CMAKE_INSTALL_PREFIX=%{_prefix} \
 	-D LIB_DIR=%{_lib} \
 	./
@@ -73,6 +87,9 @@ make DESTDIR=%{buildroot} install
 desktop-file-install --delete-original --vendor fedora --dir \
 	%{buildroot}%{_datadir}/applications \
 	%{buildroot}/%{_datadir}/applications/qmmp.desktop
+# new files since 0.3.0, using Vendor is deprecated, so just validate
+desktop-file-validate %{buildroot}/%{_datadir}/applications/%{name}_cue.desktop
+desktop-file-validate %{buildroot}/%{_datadir}/applications/%{name}_enqueue.desktop
 
 %clean
 rm -rf %{buildroot}
@@ -84,6 +101,8 @@ rm -rf %{buildroot}
 %{_libdir}/qmmp
 %{_libdir}/libqmmp*
 %{_datadir}/applications/fedora-%{name}.desktop
+%{_datadir}/applications/%{name}_cue.desktop
+%{_datadir}/applications/%{name}_enqueue.desktop
 %{_datadir}/icons/hicolor/
 
 %files devel
@@ -105,6 +124,13 @@ fi
 
 
 %changelog
+* Tue Aug 25 2009 Karel Volný <kvolny@redhat.com> - 0.3.0-1
+- new version
+- updated %%description to match upstream
+- new plugins = new BuildRequires, new .desktop files
+- AAC support disabled due to patent restrictions
+- mplayer plugin disabled due to mplayer missing from Fedora
+
 * Fri Aug 21 2009 Tomas Mraz <tmraz@redhat.com> - 0.2.3-6
 - rebuilt with new openssl
 
