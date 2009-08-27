@@ -1,6 +1,6 @@
 Name:		qmmp
 Version:	0.3.0
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Qt-based multimedia player
 
 Group:		Applications/Multimedia
@@ -124,15 +124,15 @@ fi
 
 
 %changelog
+* Thu Aug 27 2009 Tomas Mraz <tmraz@redhat.com> - 0.3.0-2
+- rebuilt with new openssl
+
 * Tue Aug 25 2009 Karel Volný <kvolny@redhat.com> - 0.3.0-1
 - new version
 - updated %%description to match upstream
 - new plugins = new BuildRequires, new .desktop files
 - AAC support disabled due to patent restrictions
 - mplayer plugin disabled due to mplayer missing from Fedora
-
-* Fri Aug 21 2009 Tomas Mraz <tmraz@redhat.com> - 0.2.3-6
-- rebuilt with new openssl
 
 * Sun Jul 26 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.2.3-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
