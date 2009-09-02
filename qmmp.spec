@@ -1,6 +1,6 @@
 Name:		qmmp
 Version:	0.3.0
-Release:	2%{?dist}
+Release:	3%{?dist}
 Summary:	Qt-based multimedia player
 
 Group:		Applications/Multimedia
@@ -15,8 +15,7 @@ BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 
 BuildRequires:	cmake flac-devel >= 1.1.3
 BuildRequires:	jack-audio-connection-kit-devel >= 0.102.5
-# libbs2b is not available yet, submitted for review (bug #519138)
-#BuildRequires:	libbs2b-devel
+BuildRequires:	libbs2b-devel
 BuildRequires:	libcdio-devel
 BuildRequires:	libmpcdec-devel >= 1.2.2 libvorbis-devel libogg-devel
 BuildRequires:	libprojectM-devel
@@ -124,6 +123,9 @@ fi
 
 
 %changelog
+* Wed Sep 02 2009 Karel Volný <kvolny@redhat.com> 0.3.0-3
+- add libbs2b support, as it got added to Fedora (see bug #519138)
+
 * Thu Aug 27 2009 Tomas Mraz <tmraz@redhat.com> - 0.3.0-2
 - rebuilt with new openssl
 
