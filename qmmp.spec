@@ -1,6 +1,6 @@
 Name:		qmmp
-Version:	0.3.0
-Release:	3%{?dist}
+Version:	0.3.1
+Release:	1%{?dist}
 Summary:	Qt-based multimedia player
 
 Group:		Applications/Multimedia
@@ -123,6 +123,9 @@ fi
 
 
 %changelog
+* Wed Nov 04 2009 Karel Volný <kvolny@redhat.com> 0.3.1-1
+- new version
+
 * Wed Sep 02 2009 Karel Volný <kvolny@redhat.com> 0.3.0-3
 - add libbs2b support, as it got added to Fedora (see bug #519138)
 
