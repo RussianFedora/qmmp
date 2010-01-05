@@ -1,6 +1,6 @@
 Name:		qmmp
 Version:	0.3.1
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Qt-based multimedia player
 
 Group:		Applications/Multimedia
@@ -10,6 +10,8 @@ Source:		http://qmmp.ylsoftware.com/files/%{name}-%{version}.tar.bz2
 Source2:	qmmp-filter-provides.sh
 %define		_use_internal_dependency_generator 0
 %define		__find_provides %{SOURCE2}
+# Patch to support libprojectM-2.0 WRT bug #551855
+Patch:		qmmp-0.3.1-projectM20.patch
 
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 
@@ -67,6 +69,8 @@ QMMP is Qt-based audio player. This package contains its header files.
 
 %prep
 %setup -q
+# Patch to support libprojectM-2.0 WRT bug #551855
+%patch -p1
 
 %build
 %cmake \
@@ -123,6 +127,9 @@ fi
 
 
 %changelog
+* Tue Jan 05 2010 Karel Volný <kvolny@redhat.com> 0.3.1-2
+- patch to support libprojectM-2.0 WRT bug #551855
+
 * Wed Nov 04 2009 Karel Volný <kvolny@redhat.com> 0.3.1-1
 - new version
 

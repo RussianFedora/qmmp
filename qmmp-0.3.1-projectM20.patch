@@ -1,0 +1,1135 @@
+diff -Naur qmmp-0.3.1/src/plugins/Visual/projectm/CMakeLists.txt qmmp-svn/src/plugins/Visual/projectm/CMakeLists.txt
+--- qmmp-0.3.1/src/plugins/Visual/projectm/CMakeLists.txt	2009-07-13 12:39:08.000000000 +0200
++++ qmmp-svn/src/plugins/Visual/projectm/CMakeLists.txt	2010-01-05 15:39:59.000000000 +0100
+@@ -31,6 +31,11 @@
+ 
+ # projectM
+ pkg_search_module(PROJECTM libprojectM)
++pkg_search_module(PROJECTM_20 libprojectM>=2.0.0)
++
++IF(PROJECTM_20_FOUND)
++ADD_DEFINITIONS(-DPROJECTM_20)
++ENDIF(PROJECTM_20_FOUND)
+ 
+ SET(libprojectm_SRCS
+     projectmwidget.cpp
+diff -Naur qmmp-0.3.1/src/plugins/Visual/projectm/projectmplugin.cpp qmmp-svn/src/plugins/Visual/projectm/projectmplugin.cpp
+--- qmmp-0.3.1/src/plugins/Visual/projectm/projectmplugin.cpp	2009-05-30 09:13:19.000000000 +0200
++++ qmmp-svn/src/plugins/Visual/projectm/projectmplugin.cpp	2009-08-24 14:54:09.000000000 +0200
+@@ -29,7 +29,6 @@
+ #include <libprojectM/projectM.hpp>
+ 
+ #include <qmmp/buffer.h>
+-#include <qmmp/constants.h>
+ #include <qmmp/output.h>
+ #include "projectmwidget.h"
+ #include "projectmplugin.h"
+diff -Naur qmmp-0.3.1/src/plugins/Visual/projectm/projectmplugin.h qmmp-svn/src/plugins/Visual/projectm/projectmplugin.h
+--- qmmp-0.3.1/src/plugins/Visual/projectm/projectmplugin.h	2009-02-28 18:17:07.000000000 +0100
++++ qmmp-svn/src/plugins/Visual/projectm/projectmplugin.h	2009-08-24 14:54:09.000000000 +0200
+@@ -22,7 +22,6 @@
+ 
+ #include <QWidget>
+ #include <qmmp/visual.h>
+-#include <qmmp/constants.h>
+ 
+ class QTimer;
+ class Buffer;
+diff -Naur qmmp-0.3.1/src/plugins/Visual/projectm/projectm.pro qmmp-svn/src/plugins/Visual/projectm/projectm.pro
+--- qmmp-0.3.1/src/plugins/Visual/projectm/projectm.pro	2009-07-27 08:48:53.000000000 +0200
++++ qmmp-svn/src/plugins/Visual/projectm/projectm.pro	2010-01-05 15:39:59.000000000 +0100
+@@ -1,5 +1,7 @@
+ include(../../plugins.pri)
+ 
++#DEFINES += PROJECTM_20
++
+ TARGET =$$PLUGINS_PREFIX/Visual/projectm
+ QMAKE_CLEAN =$$PLUGINS_PREFIX/Visual/libprojectm.so
+ 
+diff -Naur qmmp-0.3.1/src/plugins/Visual/projectm/projectmwidget.cpp qmmp-svn/src/plugins/Visual/projectm/projectmwidget.cpp
+--- qmmp-0.3.1/src/plugins/Visual/projectm/projectmwidget.cpp	2009-05-29 13:07:06.000000000 +0200
++++ qmmp-svn/src/plugins/Visual/projectm/projectmwidget.cpp	2010-01-05 15:39:59.000000000 +0100
+@@ -90,9 +90,18 @@
+         QStringList filters;
+         filters << "*.prjm" << "*.milk";
+         QFileInfoList l = presetDir.entryInfoList(filters);
++#ifdef PROJECTM_20
++        RatingList list;
++        list.push_back(3);
++        list.push_back(3);
++#endif
+         foreach (QFileInfo info, l)
+         {
++#if PROJECTM_20
++            m_projectM->addPresetURL (info.absoluteFilePath().toStdString(), info.fileName().toStdString(), list);
++#else
+             m_projectM->addPresetURL (info.absoluteFilePath().toStdString(), info.fileName().toStdString(), 1);
++#endif
+         }
+         createActions();
+         updateTitle();
+diff -Naur qmmp-0.3.1/src/plugins/Visual/projectm/translations/projectm_plugin_cs.ts qmmp-svn/src/plugins/Visual/projectm/translations/projectm_plugin_cs.ts
+--- qmmp-0.3.1/src/plugins/Visual/projectm/translations/projectm_plugin_cs.ts	2009-10-04 19:04:50.000000000 +0200
++++ qmmp-svn/src/plugins/Visual/projectm/translations/projectm_plugin_cs.ts	2010-01-05 15:39:59.000000000 +0100
+@@ -12,82 +12,82 @@
+ <context>
+     <name>ProjectMWidget</name>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="125"/>
++        <location filename="../projectmwidget.cpp" line="134"/>
+         <source>&amp;Help</source>
+         <translation>&amp;Nápověda</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="125"/>
++        <location filename="../projectmwidget.cpp" line="134"/>
+         <source>F1</source>
+         <translation>F1</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="126"/>
++        <location filename="../projectmwidget.cpp" line="135"/>
+         <source>&amp;Show Song Title</source>
+         <translation>&amp;Zobrazit název skladby</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="126"/>
++        <location filename="../projectmwidget.cpp" line="135"/>
+         <source>F2</source>
+         <translation>F2</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="127"/>
++        <location filename="../projectmwidget.cpp" line="136"/>
+         <source>&amp;Show Preset Name</source>
+         <translation>Zobrazit název &amp;předvoleb</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="127"/>
++        <location filename="../projectmwidget.cpp" line="136"/>
+         <source>F3</source>
+         <translation>F3</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="129"/>
++        <location filename="../projectmwidget.cpp" line="138"/>
+         <source>&amp;Next Preset</source>
+         <translation>&amp;Další předvolby</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="129"/>
++        <location filename="../projectmwidget.cpp" line="138"/>
+         <source>N</source>
+         <translation>N</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="130"/>
++        <location filename="../projectmwidget.cpp" line="139"/>
+         <source>&amp;Previous Preset</source>
+         <translation>Př&amp;edchozí předvolby</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="130"/>
++        <location filename="../projectmwidget.cpp" line="139"/>
+         <source>P</source>
+         <translation>P</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="131"/>
++        <location filename="../projectmwidget.cpp" line="140"/>
+         <source>&amp;Random Preset</source>
+         <translation>Ná&amp;hodné předvolby</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="131"/>
++        <location filename="../projectmwidget.cpp" line="140"/>
+         <source>R</source>
+         <translation>R</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="132"/>
++        <location filename="../projectmwidget.cpp" line="141"/>
+         <source>&amp;Lock Preset</source>
+         <translation>U&amp;zamknout předvolby</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="132"/>
++        <location filename="../projectmwidget.cpp" line="141"/>
+         <source>L</source>
+         <translation>L</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="134"/>
++        <location filename="../projectmwidget.cpp" line="143"/>
+         <source>&amp;Fullscreen</source>
+         <translation>&amp;Celá obrazovka</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="134"/>
++        <location filename="../projectmwidget.cpp" line="143"/>
+         <source>F</source>
+         <translation>F</translation>
+     </message>
+diff -Naur qmmp-0.3.1/src/plugins/Visual/projectm/translations/projectm_plugin_de.ts qmmp-svn/src/plugins/Visual/projectm/translations/projectm_plugin_de.ts
+--- qmmp-0.3.1/src/plugins/Visual/projectm/translations/projectm_plugin_de.ts	2009-10-04 19:04:50.000000000 +0200
++++ qmmp-svn/src/plugins/Visual/projectm/translations/projectm_plugin_de.ts	2010-01-05 15:39:59.000000000 +0100
+@@ -12,84 +12,84 @@
+ <context>
+     <name>ProjectMWidget</name>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="125"/>
++        <location filename="../projectmwidget.cpp" line="134"/>
+         <source>&amp;Help</source>
+         <translation>&amp;Hilfe</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="125"/>
++        <location filename="../projectmwidget.cpp" line="134"/>
+         <source>F1</source>
+         <translation>F1</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="126"/>
++        <location filename="../projectmwidget.cpp" line="135"/>
+         <source>&amp;Show Song Title</source>
+-        <translation type="unfinished">Na&amp;me des Titels anzeigen</translation>
++        <translation>Na&amp;me des Titels anzeigen</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="126"/>
++        <location filename="../projectmwidget.cpp" line="135"/>
+         <source>F2</source>
+         <translation>F2</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="127"/>
++        <location filename="../projectmwidget.cpp" line="136"/>
+         <source>&amp;Show Preset Name</source>
+-        <translation type="unfinished">N&amp;ame der Voreinstellung anzeigen</translation>
++        <translation>N&amp;ame der Voreinstellung anzeigen</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="127"/>
++        <location filename="../projectmwidget.cpp" line="136"/>
+         <source>F3</source>
+         <translation>F3</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="129"/>
++        <location filename="../projectmwidget.cpp" line="138"/>
+         <source>&amp;Next Preset</source>
+-        <translation type="unfinished">&amp;Nächste Voreinstellung</translation>
++        <translation>&amp;Nächste Voreinstellung</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="129"/>
++        <location filename="../projectmwidget.cpp" line="138"/>
+         <source>N</source>
+         <translation>N</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="130"/>
++        <location filename="../projectmwidget.cpp" line="139"/>
+         <source>&amp;Previous Preset</source>
+-        <translation type="unfinished">&amp;Vorherige Voreinstellung</translation>
++        <translation>Vor&amp;herige Voreinstellung</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="130"/>
++        <location filename="../projectmwidget.cpp" line="139"/>
+         <source>P</source>
+-        <translation type="unfinished">P</translation>
++        <translation>H</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="131"/>
++        <location filename="../projectmwidget.cpp" line="140"/>
+         <source>&amp;Random Preset</source>
+-        <translation type="unfinished">&amp;Zufällige Voreinstellung</translation>
++        <translation>&amp;Zufällige Voreinstellung</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="131"/>
++        <location filename="../projectmwidget.cpp" line="140"/>
+         <source>R</source>
+-        <translation type="unfinished">Z</translation>
++        <translation>Z</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="132"/>
++        <location filename="../projectmwidget.cpp" line="141"/>
+         <source>&amp;Lock Preset</source>
+-        <translation type="unfinished">V&amp;oreinstellung sperren</translation>
++        <translation>V&amp;oreinstellung sperren</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="132"/>
++        <location filename="../projectmwidget.cpp" line="141"/>
+         <source>L</source>
+-        <translation type="unfinished">O</translation>
++        <translation>O</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="134"/>
++        <location filename="../projectmwidget.cpp" line="143"/>
+         <source>&amp;Fullscreen</source>
+-        <translation type="unfinished">&amp;Vollbild</translation>
++        <translation>&amp;Vollbild</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="134"/>
++        <location filename="../projectmwidget.cpp" line="143"/>
+         <source>F</source>
+-        <translation type="unfinished">V</translation>
++        <translation>V</translation>
+     </message>
+ </context>
+ <context>
+diff -Naur qmmp-0.3.1/src/plugins/Visual/projectm/translations/projectm_plugin_it.ts qmmp-svn/src/plugins/Visual/projectm/translations/projectm_plugin_it.ts
+--- qmmp-0.3.1/src/plugins/Visual/projectm/translations/projectm_plugin_it.ts	2009-10-04 19:04:50.000000000 +0200
++++ qmmp-svn/src/plugins/Visual/projectm/translations/projectm_plugin_it.ts	2010-01-05 15:39:59.000000000 +0100
+@@ -6,88 +6,88 @@
+     <message>
+         <location filename="../projectmplugin.cpp" line="40"/>
+         <source>ProjectM</source>
+-        <translation type="unfinished">Visualizzatore musicale ProjectM</translation>
++        <translation>Visualizzatore musicale ProjectM</translation>
+     </message>
+ </context>
+ <context>
+     <name>ProjectMWidget</name>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="125"/>
++        <location filename="../projectmwidget.cpp" line="134"/>
+         <source>&amp;Help</source>
+         <translation>Aiuto</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="125"/>
++        <location filename="../projectmwidget.cpp" line="134"/>
+         <source>F1</source>
+         <translation>F1</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="126"/>
++        <location filename="../projectmwidget.cpp" line="135"/>
+         <source>&amp;Show Song Title</source>
+         <translation>Mostra il titolo del brano</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="126"/>
++        <location filename="../projectmwidget.cpp" line="135"/>
+         <source>F2</source>
+         <translation>F2</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="127"/>
++        <location filename="../projectmwidget.cpp" line="136"/>
+         <source>&amp;Show Preset Name</source>
+         <translation>Mostra nome del brano programmato</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="127"/>
++        <location filename="../projectmwidget.cpp" line="136"/>
+         <source>F3</source>
+         <translation>F3</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="129"/>
++        <location filename="../projectmwidget.cpp" line="138"/>
+         <source>&amp;Next Preset</source>
+         <translation>Brano programmato successivo</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="129"/>
++        <location filename="../projectmwidget.cpp" line="138"/>
+         <source>N</source>
+         <translation>N</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="130"/>
++        <location filename="../projectmwidget.cpp" line="139"/>
+         <source>&amp;Previous Preset</source>
+         <translation>&gt;Brano programmato precedente</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="130"/>
++        <location filename="../projectmwidget.cpp" line="139"/>
+         <source>P</source>
+         <translation>P</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="131"/>
++        <location filename="../projectmwidget.cpp" line="140"/>
+         <source>&amp;Random Preset</source>
+         <translation>Brano programmato casuale</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="131"/>
++        <location filename="../projectmwidget.cpp" line="140"/>
+         <source>R</source>
+         <translation>R</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="132"/>
++        <location filename="../projectmwidget.cpp" line="141"/>
+         <source>&amp;Lock Preset</source>
+         <translation>Blocca programmazione</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="132"/>
++        <location filename="../projectmwidget.cpp" line="141"/>
+         <source>L</source>
+         <translation>L</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="134"/>
++        <location filename="../projectmwidget.cpp" line="143"/>
+         <source>&amp;Fullscreen</source>
+         <translation>&amp;Schermo intero</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="134"/>
++        <location filename="../projectmwidget.cpp" line="143"/>
+         <source>F</source>
+         <translation>F</translation>
+     </message>
+@@ -107,7 +107,7 @@
+     <message>
+         <location filename="../visualprojectmfactory.cpp" line="50"/>
+         <source>Qmmp ProjectM Visual Plugin</source>
+-        <translation type="unfinished"></translation>
++        <translation>Modulo Visulaizzatore Projectm per Qmmp</translation>
+     </message>
+     <message>
+         <location filename="../visualprojectmfactory.cpp" line="51"/>
+diff -Naur qmmp-0.3.1/src/plugins/Visual/projectm/translations/projectm_plugin_lt.ts qmmp-svn/src/plugins/Visual/projectm/translations/projectm_plugin_lt.ts
+--- qmmp-0.3.1/src/plugins/Visual/projectm/translations/projectm_plugin_lt.ts	2009-10-04 19:04:50.000000000 +0200
++++ qmmp-svn/src/plugins/Visual/projectm/translations/projectm_plugin_lt.ts	2010-01-05 15:39:59.000000000 +0100
+@@ -6,88 +6,88 @@
+     <message>
+         <location filename="../projectmplugin.cpp" line="40"/>
+         <source>ProjectM</source>
+-        <translation type="unfinished"></translation>
++        <translation>ProjectM</translation>
+     </message>
+ </context>
+ <context>
+     <name>ProjectMWidget</name>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="125"/>
++        <location filename="../projectmwidget.cpp" line="134"/>
+         <source>&amp;Help</source>
+         <translation>&amp;Pagalba</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="125"/>
++        <location filename="../projectmwidget.cpp" line="134"/>
+         <source>F1</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="126"/>
++        <location filename="../projectmwidget.cpp" line="135"/>
+         <source>&amp;Show Song Title</source>
+         <translation>&amp;Rodyti dainos pavadinimą</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="126"/>
++        <location filename="../projectmwidget.cpp" line="135"/>
+         <source>F2</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="127"/>
++        <location filename="../projectmwidget.cpp" line="136"/>
+         <source>&amp;Show Preset Name</source>
+         <translation>&amp;Rodyti vizualizacijos pavadinimą</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="127"/>
++        <location filename="../projectmwidget.cpp" line="136"/>
+         <source>F3</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="129"/>
++        <location filename="../projectmwidget.cpp" line="138"/>
+         <source>&amp;Next Preset</source>
+         <translation>&amp;Sekanti</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="129"/>
++        <location filename="../projectmwidget.cpp" line="138"/>
+         <source>N</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="130"/>
++        <location filename="../projectmwidget.cpp" line="139"/>
+         <source>&amp;Previous Preset</source>
+         <translation>&amp;Atgal</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="130"/>
++        <location filename="../projectmwidget.cpp" line="139"/>
+         <source>P</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="131"/>
++        <location filename="../projectmwidget.cpp" line="140"/>
+         <source>&amp;Random Preset</source>
+         <translation>&amp;Atsitiktinė</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="131"/>
++        <location filename="../projectmwidget.cpp" line="140"/>
+         <source>R</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="132"/>
++        <location filename="../projectmwidget.cpp" line="141"/>
+         <source>&amp;Lock Preset</source>
+         <translation>&amp;Užrakinti</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="132"/>
++        <location filename="../projectmwidget.cpp" line="141"/>
+         <source>L</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="134"/>
++        <location filename="../projectmwidget.cpp" line="143"/>
+         <source>&amp;Fullscreen</source>
+         <translation>&amp;Visas ekranas</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="134"/>
++        <location filename="../projectmwidget.cpp" line="143"/>
+         <source>F</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -97,7 +97,7 @@
+     <message>
+         <location filename="../visualprojectmfactory.cpp" line="29"/>
+         <source>ProjectM</source>
+-        <translation type="unfinished"></translation>
++        <translation>ProjectM</translation>
+     </message>
+     <message>
+         <location filename="../visualprojectmfactory.cpp" line="49"/>
+diff -Naur qmmp-0.3.1/src/plugins/Visual/projectm/translations/projectm_plugin_pl.ts qmmp-svn/src/plugins/Visual/projectm/translations/projectm_plugin_pl.ts
+--- qmmp-0.3.1/src/plugins/Visual/projectm/translations/projectm_plugin_pl.ts	2009-10-04 19:04:50.000000000 +0200
++++ qmmp-svn/src/plugins/Visual/projectm/translations/projectm_plugin_pl.ts	2010-01-05 15:39:59.000000000 +0100
+@@ -12,82 +12,82 @@
+ <context>
+     <name>ProjectMWidget</name>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="125"/>
++        <location filename="../projectmwidget.cpp" line="134"/>
+         <source>&amp;Help</source>
+         <translation>&amp;Pomoc</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="125"/>
++        <location filename="../projectmwidget.cpp" line="134"/>
+         <source>F1</source>
+         <translation></translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="126"/>
++        <location filename="../projectmwidget.cpp" line="135"/>
+         <source>&amp;Show Song Title</source>
+         <translation>Pokaż &amp;tytuł utworu</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="126"/>
++        <location filename="../projectmwidget.cpp" line="135"/>
+         <source>F2</source>
+         <translation></translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="127"/>
++        <location filename="../projectmwidget.cpp" line="136"/>
+         <source>&amp;Show Preset Name</source>
+         <translation>Pokaż nazwę &amp;Wizualizacji</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="127"/>
++        <location filename="../projectmwidget.cpp" line="136"/>
+         <source>F3</source>
+         <translation></translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="129"/>
++        <location filename="../projectmwidget.cpp" line="138"/>
+         <source>&amp;Next Preset</source>
+         <translation>&amp;Następna animacja</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="129"/>
++        <location filename="../projectmwidget.cpp" line="138"/>
+         <source>N</source>
+         <translation></translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="130"/>
++        <location filename="../projectmwidget.cpp" line="139"/>
+         <source>&amp;Previous Preset</source>
+         <translation>&amp;Poprzednia animacja</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="130"/>
++        <location filename="../projectmwidget.cpp" line="139"/>
+         <source>P</source>
+         <translation></translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="131"/>
++        <location filename="../projectmwidget.cpp" line="140"/>
+         <source>&amp;Random Preset</source>
+         <translation>&amp;Losowa animacja</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="131"/>
++        <location filename="../projectmwidget.cpp" line="140"/>
+         <source>R</source>
+         <translation>R</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="132"/>
++        <location filename="../projectmwidget.cpp" line="141"/>
+         <source>&amp;Lock Preset</source>
+         <translation>&amp;Zablokuj animację</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="132"/>
++        <location filename="../projectmwidget.cpp" line="141"/>
+         <source>L</source>
+         <translation>L</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="134"/>
++        <location filename="../projectmwidget.cpp" line="143"/>
+         <source>&amp;Fullscreen</source>
+         <translation>P&amp;ełny ekran</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="134"/>
++        <location filename="../projectmwidget.cpp" line="143"/>
+         <source>F</source>
+         <translation></translation>
+     </message>
+diff -Naur qmmp-0.3.1/src/plugins/Visual/projectm/translations/projectm_plugin_ru.ts qmmp-svn/src/plugins/Visual/projectm/translations/projectm_plugin_ru.ts
+--- qmmp-0.3.1/src/plugins/Visual/projectm/translations/projectm_plugin_ru.ts	2009-10-04 19:04:50.000000000 +0200
++++ qmmp-svn/src/plugins/Visual/projectm/translations/projectm_plugin_ru.ts	2010-01-05 15:39:59.000000000 +0100
+@@ -12,82 +12,82 @@
+ <context>
+     <name>ProjectMWidget</name>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="125"/>
++        <location filename="../projectmwidget.cpp" line="134"/>
+         <source>&amp;Help</source>
+         <translation>&amp;Справка</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="125"/>
++        <location filename="../projectmwidget.cpp" line="134"/>
+         <source>F1</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="126"/>
++        <location filename="../projectmwidget.cpp" line="135"/>
+         <source>&amp;Show Song Title</source>
+         <translation>&amp;Показать название песни</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="126"/>
++        <location filename="../projectmwidget.cpp" line="135"/>
+         <source>F2</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="127"/>
++        <location filename="../projectmwidget.cpp" line="136"/>
+         <source>&amp;Show Preset Name</source>
+         <translation>&amp;Показать имя предустановки</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="127"/>
++        <location filename="../projectmwidget.cpp" line="136"/>
+         <source>F3</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="129"/>
++        <location filename="../projectmwidget.cpp" line="138"/>
+         <source>&amp;Next Preset</source>
+         <translation>&amp;Следующая предустановка</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="129"/>
++        <location filename="../projectmwidget.cpp" line="138"/>
+         <source>N</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="130"/>
++        <location filename="../projectmwidget.cpp" line="139"/>
+         <source>&amp;Previous Preset</source>
+         <translation>&amp;Предыдущая предустановка</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="130"/>
++        <location filename="../projectmwidget.cpp" line="139"/>
+         <source>P</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="131"/>
++        <location filename="../projectmwidget.cpp" line="140"/>
+         <source>&amp;Random Preset</source>
+         <translation>&amp;Случайная предустановка</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="131"/>
++        <location filename="../projectmwidget.cpp" line="140"/>
+         <source>R</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="132"/>
++        <location filename="../projectmwidget.cpp" line="141"/>
+         <source>&amp;Lock Preset</source>
+         <translation>&amp;Заблокировать предустановку</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="132"/>
++        <location filename="../projectmwidget.cpp" line="141"/>
+         <source>L</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="134"/>
++        <location filename="../projectmwidget.cpp" line="143"/>
+         <source>&amp;Fullscreen</source>
+         <translation>&amp;Полноэкранный режим</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="134"/>
++        <location filename="../projectmwidget.cpp" line="143"/>
+         <source>F</source>
+         <translation type="unfinished"></translation>
+     </message>
+diff -Naur qmmp-0.3.1/src/plugins/Visual/projectm/translations/projectm_plugin_tr.ts qmmp-svn/src/plugins/Visual/projectm/translations/projectm_plugin_tr.ts
+--- qmmp-0.3.1/src/plugins/Visual/projectm/translations/projectm_plugin_tr.ts	2009-10-04 19:04:50.000000000 +0200
++++ qmmp-svn/src/plugins/Visual/projectm/translations/projectm_plugin_tr.ts	2010-01-05 15:39:59.000000000 +0100
+@@ -12,82 +12,82 @@
+ <context>
+     <name>ProjectMWidget</name>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="125"/>
++        <location filename="../projectmwidget.cpp" line="134"/>
+         <source>&amp;Help</source>
+         <translation>&amp;Yardım</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="125"/>
++        <location filename="../projectmwidget.cpp" line="134"/>
+         <source>F1</source>
+         <translation>F1</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="126"/>
++        <location filename="../projectmwidget.cpp" line="135"/>
+         <source>&amp;Show Song Title</source>
+         <translation>&amp;Şarkı Başlığını Göster</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="126"/>
++        <location filename="../projectmwidget.cpp" line="135"/>
+         <source>F2</source>
+         <translation>F2</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="127"/>
++        <location filename="../projectmwidget.cpp" line="136"/>
+         <source>&amp;Show Preset Name</source>
+         <translation>&amp;Preset Adını Göster</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="127"/>
++        <location filename="../projectmwidget.cpp" line="136"/>
+         <source>F3</source>
+         <translation>F3</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="129"/>
++        <location filename="../projectmwidget.cpp" line="138"/>
+         <source>&amp;Next Preset</source>
+         <translation>&amp;Sonraki Preset</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="129"/>
++        <location filename="../projectmwidget.cpp" line="138"/>
+         <source>N</source>
+         <translation>N</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="130"/>
++        <location filename="../projectmwidget.cpp" line="139"/>
+         <source>&amp;Previous Preset</source>
+         <translation>&amp;Önceki Preset</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="130"/>
++        <location filename="../projectmwidget.cpp" line="139"/>
+         <source>P</source>
+         <translation>P</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="131"/>
++        <location filename="../projectmwidget.cpp" line="140"/>
+         <source>&amp;Random Preset</source>
+         <translation>&amp;Rastgele Preset</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="131"/>
++        <location filename="../projectmwidget.cpp" line="140"/>
+         <source>R</source>
+         <translation>R</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="132"/>
++        <location filename="../projectmwidget.cpp" line="141"/>
+         <source>&amp;Lock Preset</source>
+         <translation>Preset &amp;Kilitle</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="132"/>
++        <location filename="../projectmwidget.cpp" line="141"/>
+         <source>L</source>
+         <translation>L</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="134"/>
++        <location filename="../projectmwidget.cpp" line="143"/>
+         <source>&amp;Fullscreen</source>
+         <translation>&amp;Tam Ekran</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="134"/>
++        <location filename="../projectmwidget.cpp" line="143"/>
+         <source>F</source>
+         <translation>F</translation>
+     </message>
+diff -Naur qmmp-0.3.1/src/plugins/Visual/projectm/translations/projectm_plugin_uk_UA.ts qmmp-svn/src/plugins/Visual/projectm/translations/projectm_plugin_uk_UA.ts
+--- qmmp-0.3.1/src/plugins/Visual/projectm/translations/projectm_plugin_uk_UA.ts	2009-10-04 19:04:50.000000000 +0200
++++ qmmp-svn/src/plugins/Visual/projectm/translations/projectm_plugin_uk_UA.ts	2010-01-05 15:39:59.000000000 +0100
+@@ -12,82 +12,82 @@
+ <context>
+     <name>ProjectMWidget</name>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="125"/>
++        <location filename="../projectmwidget.cpp" line="134"/>
+         <source>&amp;Help</source>
+         <translation>&amp;Довідка</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="125"/>
++        <location filename="../projectmwidget.cpp" line="134"/>
+         <source>F1</source>
+         <translation></translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="126"/>
++        <location filename="../projectmwidget.cpp" line="135"/>
+         <source>&amp;Show Song Title</source>
+         <translation>&amp;Показати назву пісні</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="126"/>
++        <location filename="../projectmwidget.cpp" line="135"/>
+         <source>F2</source>
+         <translation></translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="127"/>
++        <location filename="../projectmwidget.cpp" line="136"/>
+         <source>&amp;Show Preset Name</source>
+         <translation>&amp;Показати ім&apos;я предустановки</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="127"/>
++        <location filename="../projectmwidget.cpp" line="136"/>
+         <source>F3</source>
+         <translation></translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="129"/>
++        <location filename="../projectmwidget.cpp" line="138"/>
+         <source>&amp;Next Preset</source>
+         <translation>&amp;Наступна предустановка</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="129"/>
++        <location filename="../projectmwidget.cpp" line="138"/>
+         <source>N</source>
+         <translation></translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="130"/>
++        <location filename="../projectmwidget.cpp" line="139"/>
+         <source>&amp;Previous Preset</source>
+         <translation>&amp;Попередня предустановка</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="130"/>
++        <location filename="../projectmwidget.cpp" line="139"/>
+         <source>P</source>
+         <translation></translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="131"/>
++        <location filename="../projectmwidget.cpp" line="140"/>
+         <source>&amp;Random Preset</source>
+         <translation>&amp;Випадкова предустановка</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="131"/>
++        <location filename="../projectmwidget.cpp" line="140"/>
+         <source>R</source>
+         <translation></translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="132"/>
++        <location filename="../projectmwidget.cpp" line="141"/>
+         <source>&amp;Lock Preset</source>
+         <translation>&amp;Заблокувати предустановку</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="132"/>
++        <location filename="../projectmwidget.cpp" line="141"/>
+         <source>L</source>
+         <translation></translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="134"/>
++        <location filename="../projectmwidget.cpp" line="143"/>
+         <source>&amp;Fullscreen</source>
+         <translation>&amp;Повноекранний режим</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="134"/>
++        <location filename="../projectmwidget.cpp" line="143"/>
+         <source>F</source>
+         <translation></translation>
+     </message>
+diff -Naur qmmp-0.3.1/src/plugins/Visual/projectm/translations/projectm_plugin_zh_CN.ts qmmp-svn/src/plugins/Visual/projectm/translations/projectm_plugin_zh_CN.ts
+--- qmmp-0.3.1/src/plugins/Visual/projectm/translations/projectm_plugin_zh_CN.ts	2009-10-04 19:04:50.000000000 +0200
++++ qmmp-svn/src/plugins/Visual/projectm/translations/projectm_plugin_zh_CN.ts	2010-01-05 15:39:59.000000000 +0100
+@@ -12,82 +12,82 @@
+ <context>
+     <name>ProjectMWidget</name>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="125"/>
++        <location filename="../projectmwidget.cpp" line="134"/>
+         <source>&amp;Help</source>
+         <translation>帮助(&amp;H)</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="125"/>
++        <location filename="../projectmwidget.cpp" line="134"/>
+         <source>F1</source>
+         <translation>F1</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="126"/>
++        <location filename="../projectmwidget.cpp" line="135"/>
+         <source>&amp;Show Song Title</source>
+         <translation>显示歌曲标题(&amp;S)</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="126"/>
++        <location filename="../projectmwidget.cpp" line="135"/>
+         <source>F2</source>
+         <translation>F2</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="127"/>
++        <location filename="../projectmwidget.cpp" line="136"/>
+         <source>&amp;Show Preset Name</source>
+         <translation>显示边框形式名称(&amp;S)</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="127"/>
++        <location filename="../projectmwidget.cpp" line="136"/>
+         <source>F3</source>
+         <translation>F3</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="129"/>
++        <location filename="../projectmwidget.cpp" line="138"/>
+         <source>&amp;Next Preset</source>
+         <translation>下一边框形式(&amp;N)</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="129"/>
++        <location filename="../projectmwidget.cpp" line="138"/>
+         <source>N</source>
+         <translation>N</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="130"/>
++        <location filename="../projectmwidget.cpp" line="139"/>
+         <source>&amp;Previous Preset</source>
+         <translation>上一边框形式(&amp;P)</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="130"/>
++        <location filename="../projectmwidget.cpp" line="139"/>
+         <source>P</source>
+         <translation>P</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="131"/>
++        <location filename="../projectmwidget.cpp" line="140"/>
+         <source>&amp;Random Preset</source>
+         <translation>随意边框形式(&amp;R)</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="131"/>
++        <location filename="../projectmwidget.cpp" line="140"/>
+         <source>R</source>
+         <translation>R</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="132"/>
++        <location filename="../projectmwidget.cpp" line="141"/>
+         <source>&amp;Lock Preset</source>
+         <translation>锁定边框形式(&amp;L)</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="132"/>
++        <location filename="../projectmwidget.cpp" line="141"/>
+         <source>L</source>
+         <translation>L</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="134"/>
++        <location filename="../projectmwidget.cpp" line="143"/>
+         <source>&amp;Fullscreen</source>
+         <translation>全屏(&amp;F)</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="134"/>
++        <location filename="../projectmwidget.cpp" line="143"/>
+         <source>F</source>
+         <translation>F</translation>
+     </message>
+diff -Naur qmmp-0.3.1/src/plugins/Visual/projectm/translations/projectm_plugin_zh_TW.ts qmmp-svn/src/plugins/Visual/projectm/translations/projectm_plugin_zh_TW.ts
+--- qmmp-0.3.1/src/plugins/Visual/projectm/translations/projectm_plugin_zh_TW.ts	2009-10-04 19:04:50.000000000 +0200
++++ qmmp-svn/src/plugins/Visual/projectm/translations/projectm_plugin_zh_TW.ts	2010-01-05 15:39:59.000000000 +0100
+@@ -12,82 +12,82 @@
+ <context>
+     <name>ProjectMWidget</name>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="125"/>
++        <location filename="../projectmwidget.cpp" line="134"/>
+         <source>&amp;Help</source>
+         <translation>幫助(&amp;H)</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="125"/>
++        <location filename="../projectmwidget.cpp" line="134"/>
+         <source>F1</source>
+         <translation>F1</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="126"/>
++        <location filename="../projectmwidget.cpp" line="135"/>
+         <source>&amp;Show Song Title</source>
+         <translation>顯示曲目標題(&amp;S)</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="126"/>
++        <location filename="../projectmwidget.cpp" line="135"/>
+         <source>F2</source>
+         <translation>F2</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="127"/>
++        <location filename="../projectmwidget.cpp" line="136"/>
+         <source>&amp;Show Preset Name</source>
+         <translation>顯示邊框形式名稱(&amp;S)</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="127"/>
++        <location filename="../projectmwidget.cpp" line="136"/>
+         <source>F3</source>
+         <translation>F3</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="129"/>
++        <location filename="../projectmwidget.cpp" line="138"/>
+         <source>&amp;Next Preset</source>
+         <translation>下一邊框形式(&amp;N)</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="129"/>
++        <location filename="../projectmwidget.cpp" line="138"/>
+         <source>N</source>
+         <translation>N</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="130"/>
++        <location filename="../projectmwidget.cpp" line="139"/>
+         <source>&amp;Previous Preset</source>
+         <translation>上一邊框形式(&amp;P)</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="130"/>
++        <location filename="../projectmwidget.cpp" line="139"/>
+         <source>P</source>
+         <translation>P</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="131"/>
++        <location filename="../projectmwidget.cpp" line="140"/>
+         <source>&amp;Random Preset</source>
+         <translation>隨意邊框形式(&amp;R)</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="131"/>
++        <location filename="../projectmwidget.cpp" line="140"/>
+         <source>R</source>
+         <translation>R</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="132"/>
++        <location filename="../projectmwidget.cpp" line="141"/>
+         <source>&amp;Lock Preset</source>
+         <translation>鎖定邊框形式(&amp;L)</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="132"/>
++        <location filename="../projectmwidget.cpp" line="141"/>
+         <source>L</source>
+         <translation>L</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="134"/>
++        <location filename="../projectmwidget.cpp" line="143"/>
+         <source>&amp;Fullscreen</source>
+         <translation>全屏(&amp;F)</translation>
+     </message>
+     <message>
+-        <location filename="../projectmwidget.cpp" line="134"/>
++        <location filename="../projectmwidget.cpp" line="143"/>
+         <source>F</source>
+         <translation>F</translation>
+     </message>
