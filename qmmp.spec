@@ -1,6 +1,6 @@
 Name:		qmmp
-Version:	0.3.1
-Release:	2%{?dist}
+Version:	0.3.2
+Release:	1%{?dist}
 Summary:	Qt-based multimedia player
 
 Group:		Applications/Multimedia
@@ -123,6 +123,10 @@ fi
 
 
 %changelog
+* Wed Jan 13 2010 Karel Volný <kvolny@redhat.com> 0.3.2-1
+- new version
+- projectM 2.0 compatible (WRT bug #551855)
+
 * Wed Nov 25 2009 Kevin Kofler <Kevin@tigcc.ticalc.org> 0.3.1-2
 - rebuild for Qt 4.6.0 RC1 in F13 (was built against Beta 1 with unstable ABI)
 
