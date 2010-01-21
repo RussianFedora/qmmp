@@ -1,6 +1,6 @@
 Name:		qmmp
 Version:	0.3.2
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Qt-based multimedia player
 
 Group:		Applications/Multimedia
@@ -123,6 +123,9 @@ fi
 
 
 %changelog
+* Thu Jan 21 2010 Karel Volný <kvolny@redhat.com> 0.3.2-2
+- rebuild for new libprojectM
+
 * Wed Jan 13 2010 Karel Volný <kvolny@redhat.com> 0.3.2-1
 - new version
 - projectM 2.0 compatible (WRT bug #551855)
