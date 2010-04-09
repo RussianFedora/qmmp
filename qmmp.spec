@@ -1,6 +1,6 @@
 Name:		qmmp
-Version:	0.3.2
-Release:	3%{?dist}
+Version:	0.3.3
+Release:	1%{?dist}
 Summary:	Qt-based multimedia player
 
 Group:		Applications/Multimedia
@@ -123,6 +123,10 @@ fi
 
 
 %changelog
+* Fri Apr 09 2010 Karel Volný <kvolny@redhat.com> 0.3.3-1
+- new version
+- adds Hungarian translation, some fixes
+
 * Fri Jan 22 2010 Adrian Reber <adrian@lisas.de> 0.3.2-3
 - rebuild for new libcdio
 
