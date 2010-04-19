@@ -1,5 +1,5 @@
 Name:		qmmp
-Version:	0.3.3
+Version:	0.3.4
 Release:	1%{?dist}
 Summary:	Qt-based multimedia player
 
@@ -123,6 +123,10 @@ fi
 
 
 %changelog
+* Mon Apr 19 2010 Karel Volný <kvolny@redhat.com> 0.3.4-1
+- new version
+- fixes desktop file (yum warning issue), some other fixes
+
 * Fri Apr 09 2010 Karel Volný <kvolny@redhat.com> 0.3.3-1
 - new version
 - adds Hungarian translation, some fixes
