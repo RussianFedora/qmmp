@@ -1,5 +1,5 @@
 Name:		qmmp
-Version:	0.4.1
+Version:	0.4.2
 Release:	1%{?dist}
 Summary:	Qt-based multimedia player
 
@@ -128,6 +128,11 @@ fi
 
 
 %changelog
+* Mon Sep 13 2010 Karel Volný <kvolny@redhat.com> 0.4.2-1
+- new version
+- adds Japanese and Spanish translations
+- lot of fixes
+
 * Wed Jun 30 2010 Karel Volný <kvolny@redhat.com> 0.4.1-1
 - new version
 - adds Dutch translation
