@@ -1,5 +1,5 @@
 Name:		qmmp
-Version:	0.3.4
+Version:	0.4.2
 Release:	1%{?dist}
 Summary:	Qt-based multimedia player
 
@@ -14,8 +14,10 @@ Source2:	qmmp-filter-provides.sh
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 
 BuildRequires:	cmake flac-devel >= 1.1.3
+BuildRequires:	enca-devel
 BuildRequires:	jack-audio-connection-kit-devel >= 0.102.5
 BuildRequires:	libbs2b-devel
+BuildRequires:	libcddb-devel
 BuildRequires:	libcdio-devel
 BuildRequires:	libmpcdec-devel >= 1.2.2 libvorbis-devel libogg-devel
 BuildRequires:	libprojectM-devel
@@ -73,6 +75,7 @@ QMMP is Qt-based audio player. This package contains its header files.
 	-D USE_AAC:BOOL=FALSE \
 	-D USE_FFMPEG:BOOL=FALSE \
 	-D USE_MAD:BOOL=FALSE \
+	-D USE_MMS:BOOL=FALSE \
 	-D USE_MPLAYER:BOOL=FALSE \
 	-D CMAKE_INSTALL_PREFIX=%{_prefix} \
 	-D LIB_DIR=%{_lib} \
@@ -103,6 +106,7 @@ rm -rf %{buildroot}
 %{_datadir}/applications/%{name}_cue.desktop
 %{_datadir}/applications/%{name}_enqueue.desktop
 %{_datadir}/icons/hicolor/
+%{_datadir}/%{name}/
 
 %files devel
 %{_includedir}/*
@@ -123,6 +127,11 @@ fi
 
 
 %changelog
+* Mon Sep 13 2010 Karel Volný <kvolny@redhat.com> 0.4.2-1
+- new version
+- adds Japanese and Spanish translations
+- lot of fixes (should fix bug #634527)
+
 * Mon Apr 19 2010 Karel Volný <kvolny@redhat.com> 0.3.4-1
 - new version
 - fixes desktop file (yum warning issue), some other fixes
