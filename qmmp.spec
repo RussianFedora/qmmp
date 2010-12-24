@@ -1,6 +1,6 @@
 Name:		qmmp
-Version:	0.3.4
-Release:	1%{?dist}
+Version:	0.4.0
+Release:	2%{?dist}
 Summary:	Qt-based multimedia player
 
 Group:		Applications/Multimedia
@@ -23,9 +23,16 @@ BuildRequires:	libsamplerate-devel alsa-lib-devel taglib-devel
 BuildRequires:	qt-devel >= 4.2 desktop-file-utils
 BuildRequires:	libsndfile-devel wavpack-devel pulseaudio-libs-devel
 BuildRequires:	libmodplug-devel libcurl-devel openssl-devel
+BuildRequires:	ffmpeg-devel >= 0.4.9-0.47.20080614
+BuildRequires:	faad2-devel libmad-devel
+BuildRequires:	enca-devel libcddb-devel libmms-devel 
+
 
 Requires(post):	/sbin/ldconfig
 Requires(pre):	/sbin/ldconfig
+
+Provides:	qmmp-plugins-freeworld = %{version}
+Obsoletes:	qmmp-plugins-freeworld
 
 %package devel
 Summary:	Header files for qmmp
@@ -38,6 +45,9 @@ Main opportunities:
 
 	* Winamp and xmms skins support
 	* plugins support
+	* AAC support
+	* MPEG support
+	* WMA support
 	* Ogg Vorbis support
 	* native FLAC support
 	* Musepack support
@@ -70,10 +80,6 @@ QMMP is Qt-based audio player. This package contains its header files.
 
 %build
 %cmake \
-	-D USE_AAC:BOOL=FALSE \
-	-D USE_FFMPEG:BOOL=FALSE \
-	-D USE_MAD:BOOL=FALSE \
-	-D USE_MPLAYER:BOOL=FALSE \
 	-D CMAKE_INSTALL_PREFIX=%{_prefix} \
 	-D LIB_DIR=%{_lib} \
 	./
@@ -103,6 +109,7 @@ rm -rf %{buildroot}
 %{_datadir}/applications/%{name}_cue.desktop
 %{_datadir}/applications/%{name}_enqueue.desktop
 %{_datadir}/icons/hicolor/
+%{_datadir}/qmmp/images/*.png
 
 %files devel
 %{_includedir}/*
@@ -123,6 +130,12 @@ fi
 
 
 %changelog
+* Mon Jun  7 2010 Arkady L. Shane <ashejn@yandex-team.ru> 0.4.0-2
+- rebuilt with enca, libcddb, libmms
+
+* Thu Jun  3 2010 Arkady L. Shane <ashejn@yandex-team.ru> 0.4.0-1
+- update to 0.4.0
+
 * Mon Apr 19 2010 Karel Volný <kvolny@redhat.com> 0.3.4-1
 - new version
 - fixes desktop file (yum warning issue), some other fixes
